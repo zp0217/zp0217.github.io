@@ -1,0 +1,42 @@
+project:
+  type: website
+author: zoo un park
+website:
+  title: Time series analysis
+  navbar:
+    left:
+    - text: About You
+      href: about_you.qmd
+    - text: Introduction
+      href: introduction.qmd
+    - text: Data Sources
+      href: data_sources.qmd
+    - text: Data Visualization
+      href: data_visualization.qmd
+    - text: Exploratory Data Analysis
+      href: EDA.qmd
+    - text: Time Series Models
+      menu:
+      - text: Univariate TS Models (ARIMA/SARIMA)
+        href: univariate_ts.qmd
+      - text: Multivariate TS Models (ARIMAX/SARIMAX/VAR)
+        href: multivariate_ts.qmd
+      - text: Financial Time Series Models (ARCH/GARCH)
+        href: financial_ts.qmd
+      - text: Deep Learning for TS
+        href: deep-learning_ts.qmd
+      - text: 'Other: Interrupted TS/ARFIMA/Spectral Analysis'
+        href: others.qmd
+    - text: Conclusions
+      href: conclusions.qmd
+    collapse: true
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    code-tools: false
+    code-block-bg: true
+    code-line-numbers: false
+execute:
+  echo: false
