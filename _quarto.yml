@@ -1,6 +1,5 @@
 project:
   type: website
-  output-dir: docs
 author: zoo un park
 website:
   title: Time series analysis
