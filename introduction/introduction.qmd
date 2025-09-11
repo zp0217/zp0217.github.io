@@ -3,8 +3,10 @@ title: "Introduction"
 format: html
 ---
 
-# FX MARKET
+# Topic 
 
+![](/image/currency.jpg)
+@currency-photo
 
 
 # Analytical Angels

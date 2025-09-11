@@ -3,7 +3,7 @@ project:
   output-dir: docs
 author: zoo un park
 website:
-  title: Time series analysis
+  title: FX market in multi-asset portfolio analysis
   navbar:
     left:
     - text: About You
@@ -13,23 +13,23 @@ website:
     - text: Data Sources
       href: ./data/data_source.qmd
     - text: Data Visualization
-      href: data_visualization.qmd
+      href: ./data_viz/viz.qmd
     - text: Exploratory Data Analysis
-      href: EDA.qmd
+      href: ./EDA/eda.qmd
     - text: Time Series Models
       menu:
       - text: Univariate TS Models (ARIMA/SARIMA)
-        href: univariate_ts.qmd
+        href: ./ts/tsunivariate_ts.qmd
       - text: Multivariate TS Models (ARIMAX/SARIMAX/VAR)
-        href: multivariate_ts.qmd
+        href: ./ts/multivariate_ts.qmd
       - text: Financial Time Series Models (ARCH/GARCH)
-        href: financial_ts.qmd
+        href: ./ts/financial_ts.qmd
       - text: Deep Learning for TS
-        href: deep-learning_ts.qmd
+        href: ./ts/deep-learning_ts.qmd
       - text: 'Other: Interrupted TS/ARFIMA/Spectral Analysis'
-        href: others.qmd
+        href: ./ts/others.qmd
     - text: Conclusions
-      href: conclusions.qmd
+      href: conclusion.qmd
     collapse: true
 format:
   html:

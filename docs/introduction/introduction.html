@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -89,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href=".././about/about_you.qmd"> 
+    <a class="nav-link" href="../about/about_me.html"> 
 <span class="menu-text">About You</span></a>
   </li>  
   <li class="nav-item">
@@ -101,11 +121,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Data Sources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../data_visualization.qmd"> 
+    <a class="nav-link" href="../data_viz/viz.html"> 
 <span class="menu-text">Data Visualization</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../EDA.qmd"> 
+    <a class="nav-link" href="../EDA/eda.html"> 
 <span class="menu-text">Exploratory Data Analysis</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -114,29 +134,29 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-time-series-models">    
         <li>
-    <a class="dropdown-item" href="../univariate_ts.qmd">
+    <a class="dropdown-item" href=".././ts/tsunivariate_ts.qmd">
  <span class="dropdown-text">Univariate TS Models (ARIMA/SARIMA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../multivariate_ts.qmd">
+    <a class="dropdown-item" href=".././ts/multivariate_ts.qmd">
  <span class="dropdown-text">Multivariate TS Models (ARIMAX/SARIMAX/VAR)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../financial_ts.qmd">
+    <a class="dropdown-item" href=".././ts/financial_ts.qmd">
  <span class="dropdown-text">Financial Time Series Models (ARCH/GARCH)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../deep-learning_ts.qmd">
+    <a class="dropdown-item" href=".././ts/deep-learning_ts.qmd">
  <span class="dropdown-text">Deep Learning for TS</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../others.qmd">
+    <a class="dropdown-item" href=".././ts/others.qmd">
  <span class="dropdown-text">Other: Interrupted TS/ARFIMA/Spectral Analysis</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../conclusions.qmd"> 
+    <a class="nav-link" href="../conclusion.qmd"> 
 <span class="menu-text">Conclusions</span></a>
   </li>  
 </ul>
@@ -155,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#fx-market" id="toc-fx-market" class="nav-link active" data-scroll-target="#fx-market">FX MARKET</a></li>
+  <li><a href="#topic" id="toc-topic" class="nav-link active" data-scroll-target="#topic">Topic</a></li>
   <li><a href="#analytical-angels" id="toc-analytical-angels" class="nav-link" data-scroll-target="#analytical-angels">Analytical Angels</a></li>
   <li><a href="#guiding-questions" id="toc-guiding-questions" class="nav-link" data-scroll-target="#guiding-questions">Guiding Questions</a></li>
   <li><a href="#big-pictures" id="toc-big-pictures" class="nav-link" data-scroll-target="#big-pictures">Big pictures</a></li>
@@ -192,8 +212,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="fx-market" class="level1">
-<h1>FX MARKET</h1>
+<section id="topic" class="level1">
+<h1>Topic</h1>
+<p><img src="../image/currency.jpg" class="img-fluid"><span class="citation" data-cites="currency-photo"><sup><a href="#ref-currency-photo" role="doc-biblioref">1</a></sup></span></p>
 </section>
 <section id="analytical-angels" class="level1">
 <h1>Analytical Angels</h1>
@@ -208,12 +229,17 @@ ul.task-list li input[type="checkbox"] {
 <h1>literature reviews</h1>
 </section>
 <section id="references" class="level1">
-<h1>references</h1>
+
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">references</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-currency-photo" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Currency photo, HowStuffWorks, money.howstuffworks.com/strongest-currency-in-the-world.htm.</div>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
