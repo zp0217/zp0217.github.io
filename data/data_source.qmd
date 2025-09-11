@@ -3,7 +3,24 @@ title: "DATA SOURCES"
 format: html
 ---
 
-# Data source 1
+# Data source 1: FRED data(all four currencies)
 
 
-# Data source 2
+
+
+# Data source 2: Yahoo finance
+
+https://finance.yahoo.com/
+
+
+# Data source 3: BIS data portal(effective exchange rate)
+
+https://data.bis.org/topics/EER/data
+
+
+
+# Data source 4:  FRED data on US treasury securities
+
+
+
+# Data source 5:  

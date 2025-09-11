@@ -8,7 +8,7 @@
 
 <meta name="author" content="zoo un park">
 
-<title>Introduction – Time series analysis</title>
+<title>Introduction – FX market in multi-asset portfolio analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ div.csl-indent {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Time series analysis</span>
+    <span class="navbar-title">FX market in multi-asset portfolio analysis</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -175,10 +175,10 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#topic" id="toc-topic" class="nav-link active" data-scroll-target="#topic">Topic</a></li>
+  <li><a href="#time-series-analyis-on-fx-market-and-multi-asset-portfolio" id="toc-time-series-analyis-on-fx-market-and-multi-asset-portfolio" class="nav-link active" data-scroll-target="#time-series-analyis-on-fx-market-and-multi-asset-portfolio">Time series analyis on FX market and multi-asset portfolio</a></li>
+  <li><a href="#big-picture" id="toc-big-picture" class="nav-link" data-scroll-target="#big-picture">Big picture</a></li>
   <li><a href="#analytical-angels" id="toc-analytical-angels" class="nav-link" data-scroll-target="#analytical-angels">Analytical Angels</a></li>
   <li><a href="#guiding-questions" id="toc-guiding-questions" class="nav-link" data-scroll-target="#guiding-questions">Guiding Questions</a></li>
-  <li><a href="#big-pictures" id="toc-big-pictures" class="nav-link" data-scroll-target="#big-pictures">Big pictures</a></li>
   <li><a href="#literature-reviews" id="toc-literature-reviews" class="nav-link" data-scroll-target="#literature-reviews">literature reviews</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">references</a></li>
   </ul>
@@ -212,21 +212,52 @@ div.csl-indent {
 </header>
 
 
-<section id="topic" class="level1">
-<h1>Topic</h1>
+<section id="time-series-analyis-on-fx-market-and-multi-asset-portfolio" class="level1">
+<h1>Time series analyis on FX market and multi-asset portfolio</h1>
 <p><img src="../image/currency.jpg" class="img-fluid"><span class="citation" data-cites="currency-photo"><sup><a href="#ref-currency-photo" role="doc-biblioref">1</a></sup></span></p>
+<p>We bump into exchange rates more often than we realize—when we travel, shop online from overseas retailers, or invest in foreign stocks and funds. An exchange rate is simply the price of one currency in terms of another, but that price ripples through everyday budgets and corporate balance sheets alike. In other words, FX sits at the seam between micro decisions (what a family pays for imports) and macro outcomes (inflation, trade balances, and monetary policy).</p>
+<p>The foreign-exchange (FX) market is where those prices are set. It is a cornerstone of global finance not only because of its scale, but because it compresses a huge amount of information about growth prospects, interest-rate paths, and cross-border trade into a single number that moves every second. FX is also policy-relevant: shifts in exchange rates can tighten or loosen financial conditions, influence exporters’ competitiveness, and feed directly into inflation.</p>
+</section>
+<section id="big-picture" class="level1">
+<h1>Big picture</h1>
+<p>This project focuses on four widely used and highly influential currencies—the US dollar (USD), euro (EUR), British pound (GBP), and Japanese yen (JPY). These are not just FX workhorses; they also anchor activity in other markets like equities, bonds, commodities, and ETFs. When they move, portfolio returns, hedging costs, and corporate earnings move with them.</p>
+<p>goal of this project is to study how these four exchange rates evolve over time and how they interact with the broader investment universe. Using a data-science approach—cleaning and aligning public time-series data, modeling seasonality and volatility, testing structural breaks—we will examine (i) how interest-rate differentials and yield-curve shifts map into FX returns, (ii) how trade and current-account dynamics shape medium-term trends, (iii) how equity stress, credit spreads, and oil shocks(gold) spill over into currencies, (iv) what investors gain or lose by hedging foreign-equity exposure, (v) who “leads” whom within the USD–EUR–GBP–JPY complex.</p>
+<p>By the end, we aim to translate these signals into clear, practical guidance: when hedging tends to help, which risk states matter most, and how FX connects the dots between the real economy and financial markets.</p>
 </section>
 <section id="analytical-angels" class="level1">
 <h1>Analytical Angels</h1>
+<ul>
+<li><p>major currency in FX market : USD–EUR–GBP–JPY — See how the four big currencies move together, who leads, and when that changes.</p></li>
+<li><p>Rates &amp; Curves → Currency Moves — Test whether interest-rate gaps and bond-curve shape help - predict near-term currency moves.</p></li>
+<li><p>Trade &amp; External Balances → FX — Remove regular seasonal patterns in trade data and check if changes line up with currency trends.(macro-perspective)</p></li>
+<li><p>Cross-Asset Risk &amp; Shock Transmission — Measure how stock sell-offs, credit stress, and oil swings spill over into currencies.</p></li>
+<li><p>Equity Exposure &amp; Currency Hedging — Turn the insights into a simple rule for when hedging foreign stocks helps.</p></li>
+</ul>
 </section>
 <section id="guiding-questions" class="level1">
 <h1>Guiding Questions</h1>
-</section>
-<section id="big-pictures" class="level1">
-<h1>Big pictures</h1>
+<ol type="1">
+<li><p>Rates → FX: When do interest-rate differentials and yield-curve slopes (2y–10y) predict 1–3 month FX returns, and did those links change after 2020?</p></li>
+<li><p>Trade seasonality: Do seasonally adjusted moves in trade balances/current accounts lead medium-horizon FX trends, and are effects stronger around quarter-end?</p></li>
+<li><p>Risk-off behavior: In equity sell-offs and credit stress (VIX/MOVE up), which currency (USD/EUR/GBP/JPY) tends to appreciate most, and how long do those moves persist?</p></li>
+<li><p>Oil shocks: Are FX responses to oil price spikes vs.&nbsp;drops asymmetric, and did the 2022 energy shock permanently alter EUR/GBP/JPY sensitivities?</p></li>
+<li><p>Hedging payoff: Under what carry–volatility states do currency-hedged equity ETFs (e.g., HEZU, DXJ) outperform unhedged peers (EZU, EWJ), net of costs?</p></li>
+<li><p>Hedge rule efficacy: Can a simple rule (e.g., hedge when carry is low and volatility is high) beat always-hedged or always-unhedged strategies out-of-sample?</p></li>
+<li><p>Four-currency leadership: In a USD–EUR–GBP–JPY system, who leads during regime shifts, and do cross-rates (EUR/GBP, EUR/JPY, GBP/JPY) add predictive information?</p></li>
+<li><p>Event impacts: Around FOMC/ECB/BoE/BoJ meetings and major data (CPI/NFP/GDP), are abnormal FX returns statistically significant, and state-dependent (risk-on vs risk-off)?</p></li>
+<li><p>Break alignment: Are breakpoints in FX–rates, FX–trade, and FX–risk linkages synchronized around 2020–2022, or are they asset-specific?</p></li>
+<li><p>Model value-add: Do regime-aware models (TVP, Markov-switching) deliver meaningful forecast gains over a random-walk at 1–3 month horizons across all three pairs?</p></li>
+</ol>
 </section>
 <section id="literature-reviews" class="level1">
 <h1>literature reviews</h1>
+<ul>
+<li><p>exchange<span class="citation" data-cites="rossi2013-exchange-rate-predictability"><sup><a href="#ref-rossi2013-exchange-rate-predictability" role="doc-biblioref">2</a></sup></span></p></li>
+<li><p>currency fluctuation<span class="citation" data-cites="engel2016-exchange-rates-risk-premium"><sup><a href="#ref-engel2016-exchange-rates-risk-premium" role="doc-biblioref">3</a></sup></span></p></li>
+<li><p>trade<span class="citation" data-cites="ma-schmidt-eisenlohr-2025-financial-channel"><sup><a href="#ref-ma-schmidt-eisenlohr-2025-financial-channel" role="doc-biblioref">4</a></sup></span></p></li>
+<li><p>asset risk<span class="citation" data-cites="lee2022-volatility-spillovers-oil-uncertainty"><sup><a href="#ref-lee2022-volatility-spillovers-oil-uncertainty" role="doc-biblioref">5</a></sup></span></p></li>
+<li><p>equity hedging<span class="citation" data-cites="PAGNOTTONI2024129948"><sup><a href="#ref-PAGNOTTONI2024129948" role="doc-biblioref">6</a></sup></span></p></li>
+</ul>
 </section>
 <section id="references" class="level1">
 
@@ -238,6 +269,21 @@ div.csl-indent {
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">references</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-currency-photo" class="csl-entry" role="listitem">
 <div class="csl-left-margin">1. </div><div class="csl-right-inline">Currency photo, HowStuffWorks, money.howstuffworks.com/strongest-currency-in-the-world.htm.</div>
+</div>
+<div id="ref-rossi2013-exchange-rate-predictability" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Rossi, B. <a href="https://doi.org/10.1257/jel.51.4.1063">Exchange rate predictability</a>. <em>Journal of Economic Literature</em> <strong>51</strong>, 1063–1119 (2013).</div>
+</div>
+<div id="ref-engel2016-exchange-rates-risk-premium" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Engel, C. <a href="https://doi.org/10.1257/aer.20121365">Exchange rates, interest rates, and the risk premium</a>. <em>American Economic Review</em> <strong>106</strong>, 436–474 (2016).</div>
+</div>
+<div id="ref-ma-schmidt-eisenlohr-2025-financial-channel" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Ma, S. &amp; Schmidt-Eisenlohr, T. The financial channel of the exchange rate and global trade. <em>The Review of Financial Studies</em> (2025) doi:<a href="https://doi.org/10.1093/rfs/hhaf040">10.1093/rfs/hhaf040</a>.</div>
+</div>
+<div id="ref-lee2022-volatility-spillovers-oil-uncertainty" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Lee, S. &amp; Kim, Y. M. <a href="https://doi.org/10.1080/13504851.2022.2097167">Volatility spillovers across financial markets: The role of oil price uncertainty</a>. <em>Applied Economics Letters</em> <strong>30</strong>, 2342–2347 (2022).</div>
+</div>
+<div id="ref-PAGNOTTONI2024129948" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Pagnottoni, P. &amp; Spelta, A. <a href="https://doi.org/10.1016/j.physa.2024.129948">Hedging global currency risk: A dynamic machine learning approach</a>. <em>Physica A: Statistical Mechanics and its Applications</em> <strong>649</strong>, 129948 (2024).</div>
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

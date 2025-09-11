@@ -3,23 +3,83 @@ title: "Introduction"
 format: html
 ---
 
-# Topic 
+# Time series analyis on FX market and multi-asset portfolio
 
 ![](/image/currency.jpg)
 @currency-photo
 
+We bump into exchange rates more often than we realize—when we travel, shop online from overseas retailers, or invest in foreign stocks and funds. An exchange rate is simply the price of one currency in terms of another, but that price ripples through everyday budgets and corporate balance sheets alike. In other words, FX sits at the seam between micro decisions (what a family pays for imports) and macro outcomes (inflation, trade balances, and monetary policy).
+
+The foreign-exchange (FX) market is where those prices are set. It is a cornerstone of global finance not only because of its scale, but because it compresses a huge amount of information about growth prospects, interest-rate paths, and cross-border trade into a single number that moves every second. FX is also policy-relevant: shifts in exchange rates can tighten or loosen financial conditions, influence exporters’ competitiveness, and feed directly into inflation.
+
+# Big picture
+
+This project focuses on four widely used and highly influential currencies—the US dollar (USD), euro (EUR), British pound (GBP), and Japanese yen (JPY). These are not just FX workhorses; they also anchor activity in other markets like equities, bonds, commodities, and ETFs. When they move, portfolio returns, hedging costs, and corporate earnings move with them.
+
+goal of this project is to study how these four exchange rates evolve over time and how they interact with the broader investment universe. Using a data-science approach—cleaning and aligning public time-series data, modeling seasonality and volatility, testing structural breaks—we will examine (i) how interest-rate differentials and yield-curve shifts map into FX returns, (ii) how trade and current-account dynamics shape medium-term trends, (iii) how equity stress, credit spreads, and oil shocks(gold) spill over into currencies, (iv) what investors gain or lose by hedging foreign-equity exposure, (v) who “leads” whom within the USD–EUR–GBP–JPY complex.
+
+By the end, we aim to translate these signals into clear, practical guidance: when hedging tends to help, which risk states matter most, and how FX connects the dots between the real economy and financial markets.
+
+
 
 # Analytical Angels
+
+- major currency in FX market : USD–EUR–GBP–JPY — See how the four big currencies move together, who leads, and when that changes.
+
+- Rates & Curves → Currency Moves — Test whether interest-rate gaps and bond-curve shape help - predict near-term currency moves.
+
+- Trade & External Balances → FX — Remove regular seasonal patterns in trade data and check if changes line up with currency trends.(macro-perspective)
+
+- Cross-Asset Risk & Shock Transmission — Measure how stock sell-offs, credit stress, and oil swings spill over into currencies.
+
+- Equity Exposure & Currency Hedging — Turn the insights into a simple rule for when hedging foreign stocks helps.
+
+
 
 
 # Guiding Questions 
 
 
+1. Rates → FX: When do interest-rate differentials and yield-curve slopes (2y–10y) predict 1–3 month FX returns, and did those links change after 2020?
 
-# Big pictures
+2. Trade seasonality: Do seasonally adjusted moves in trade balances/current accounts lead medium-horizon FX trends, and are effects stronger around quarter-end?
+
+3. Risk-off behavior: In equity sell-offs and credit stress (VIX/MOVE up), which currency (USD/EUR/GBP/JPY) tends to appreciate most, and how long do those moves persist?
+
+4. Oil shocks: Are FX responses to oil price spikes vs. drops asymmetric, and did the 2022 energy shock permanently alter EUR/GBP/JPY sensitivities?
+
+5. Hedging payoff: Under what carry–volatility states do currency-hedged equity ETFs (e.g., HEZU, DXJ) outperform unhedged peers (EZU, EWJ), net of costs?
+
+6. Hedge rule efficacy: Can a simple rule (e.g., hedge when carry is low and volatility is high) beat always-hedged or always-unhedged strategies out-of-sample?
+
+7. Four-currency leadership: In a USD–EUR–GBP–JPY system, who leads during regime shifts, and do cross-rates (EUR/GBP, EUR/JPY, GBP/JPY) add predictive information?
+
+8. Event impacts: Around FOMC/ECB/BoE/BoJ meetings and major data (CPI/NFP/GDP), are abnormal FX returns statistically significant, and state-dependent (risk-on vs risk-off)?
+
+9. Break alignment: Are breakpoints in FX–rates, FX–trade, and FX–risk linkages synchronized around 2020–2022, or are they asset-specific?
+
+10. Model value-add: Do regime-aware models (TVP, Markov-switching) deliver meaningful forecast gains over a random-walk at 1–3 month horizons across all three pairs?
+
 
 
 # literature reviews
 
+- exchange
+@rossi2013-exchange-rate-predictability
+
+- currency fluctuation
+@engel2016-exchange-rates-risk-premium
+
+- trade 
+@ma-schmidt-eisenlohr-2025-financial-channel
+
+- asset risk
+@lee2022-volatility-spillovers-oil-uncertainty
+
+- equity hedging 
+@PAGNOTTONI2024129948
+
+
 
 # references
+

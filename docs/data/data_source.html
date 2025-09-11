@@ -8,7 +8,7 @@
 
 <meta name="author" content="zoo un park">
 
-<title>DATA SOURCES – Time series analysis</title>
+<title>DATA SOURCES – FX market in multi-asset portfolio analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Time series analysis</span>
+    <span class="navbar-title">FX market in multi-asset portfolio analysis</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about_you.qmd"> 
+    <a class="nav-link" href="../about/about_me.html"> 
 <span class="menu-text">About You</span></a>
   </li>  
   <li class="nav-item">
@@ -101,11 +101,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Data Sources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../data_visualization.qmd"> 
+    <a class="nav-link" href="../data_viz/viz.html"> 
 <span class="menu-text">Data Visualization</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../EDA.qmd"> 
+    <a class="nav-link" href="../EDA/eda.html"> 
 <span class="menu-text">Exploratory Data Analysis</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -114,29 +114,29 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-time-series-models">    
         <li>
-    <a class="dropdown-item" href="../univariate_ts.qmd">
+    <a class="dropdown-item" href=".././ts/tsunivariate_ts.qmd">
  <span class="dropdown-text">Univariate TS Models (ARIMA/SARIMA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../multivariate_ts.qmd">
+    <a class="dropdown-item" href=".././ts/multivariate_ts.qmd">
  <span class="dropdown-text">Multivariate TS Models (ARIMAX/SARIMAX/VAR)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../financial_ts.qmd">
+    <a class="dropdown-item" href=".././ts/financial_ts.qmd">
  <span class="dropdown-text">Financial Time Series Models (ARCH/GARCH)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../deep-learning_ts.qmd">
+    <a class="dropdown-item" href=".././ts/deep-learning_ts.qmd">
  <span class="dropdown-text">Deep Learning for TS</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../others.qmd">
+    <a class="dropdown-item" href=".././ts/others.qmd">
  <span class="dropdown-text">Other: Interrupted TS/ARFIMA/Spectral Analysis</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../conclusions.qmd"> 
+    <a class="nav-link" href="../conclusion.qmd"> 
 <span class="menu-text">Conclusions</span></a>
   </li>  
 </ul>
@@ -155,8 +155,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-source-1" id="toc-data-source-1" class="nav-link active" data-scroll-target="#data-source-1">Data source 1</a></li>
-  <li><a href="#data-source-2" id="toc-data-source-2" class="nav-link" data-scroll-target="#data-source-2">Data source 2</a></li>
+  <li><a href="#data-source-1-fred-dataall-four-currencies" id="toc-data-source-1-fred-dataall-four-currencies" class="nav-link active" data-scroll-target="#data-source-1-fred-dataall-four-currencies">Data source 1: FRED data(all four currencies)</a></li>
+  <li><a href="#data-source-2-yahoo-finance" id="toc-data-source-2-yahoo-finance" class="nav-link" data-scroll-target="#data-source-2-yahoo-finance">Data source 2: Yahoo finance</a></li>
+  <li><a href="#data-source-3-bis-data-portaleffective-exchange-rate" id="toc-data-source-3-bis-data-portaleffective-exchange-rate" class="nav-link" data-scroll-target="#data-source-3-bis-data-portaleffective-exchange-rate">Data source 3: BIS data portal(effective exchange rate)</a></li>
+  <li><a href="#data-source-4-fred-data-on-us-treasury-securities" id="toc-data-source-4-fred-data-on-us-treasury-securities" class="nav-link" data-scroll-target="#data-source-4-fred-data-on-us-treasury-securities">Data source 4: FRED data on US treasury securities</a></li>
+  <li><a href="#data-source-5" id="toc-data-source-5" class="nav-link" data-scroll-target="#data-source-5">Data source 5:</a></li>
   </ul>
 </nav>
     </div>
@@ -188,11 +191,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="data-source-1" class="level1">
-<h1>Data source 1</h1>
+<section id="data-source-1-fred-dataall-four-currencies" class="level1">
+<h1>Data source 1: FRED data(all four currencies)</h1>
 </section>
-<section id="data-source-2" class="level1">
-<h1>Data source 2</h1>
+<section id="data-source-2-yahoo-finance" class="level1">
+<h1>Data source 2: Yahoo finance</h1>
+<p>https://finance.yahoo.com/</p>
+</section>
+<section id="data-source-3-bis-data-portaleffective-exchange-rate" class="level1">
+<h1>Data source 3: BIS data portal(effective exchange rate)</h1>
+<p>https://data.bis.org/topics/EER/data</p>
+</section>
+<section id="data-source-4-fred-data-on-us-treasury-securities" class="level1">
+<h1>Data source 4: FRED data on US treasury securities</h1>
+</section>
+<section id="data-source-5" class="level1">
+<h1>Data source 5:</h1>
 
 
 </section>
