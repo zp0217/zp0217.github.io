@@ -29,7 +29,7 @@ website:
       - text: 'Other: Interrupted TS/ARFIMA/Spectral Analysis'
         href: ./ts/other.qmd
     - text: Conclusions
-      href: ./conclusion/conclusion.qmd
+      href: ./conclusions/conclusion.qmd
     collapse: true
 format:
   html:

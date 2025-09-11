@@ -8,7 +8,7 @@
 
 <meta name="author" content="zoo un park">
 
-<title>Time series Analysis – FX market in multi-asset portfolio analysis</title>
+<title>ts – FX market in multi-asset portfolio analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,22 +24,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">FX market in multi-asset portfolio analysis</span>
     </a>
   </div>
@@ -89,23 +89,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about/about_me.html"> 
+    <a class="nav-link" href="../about/about_me.html"> 
 <span class="menu-text">About You</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./introduction/introduction.html"> 
+    <a class="nav-link" href="../introduction/introduction.html"> 
 <span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data/data_source.html"> 
+    <a class="nav-link" href="../data/data_source.html"> 
 <span class="menu-text">Data Sources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data_viz/viz.html"> 
+    <a class="nav-link" href="../data_viz/viz.html"> 
 <span class="menu-text">Data Visualization</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./EDA/eda.html"> 
+    <a class="nav-link" href="../EDA/eda.html"> 
 <span class="menu-text">Exploratory Data Analysis</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -114,29 +114,29 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-time-series-models">    
         <li>
-    <a class="dropdown-item" href="./ts/uni.html">
+    <a class="dropdown-item" href="../ts/uni.html">
  <span class="dropdown-text">Univariate TS Models (ARIMA/SARIMA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./ts/multi.html">
+    <a class="dropdown-item" href="../ts/multi.html">
  <span class="dropdown-text">Multivariate TS Models (ARIMAX/SARIMAX/VAR)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./ts/financial_ts.html">
+    <a class="dropdown-item" href="../ts/financial_ts.html">
  <span class="dropdown-text">Financial Time Series Models (ARCH/GARCH)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./ts/dl.html">
+    <a class="dropdown-item" href="../ts/dl.html">
  <span class="dropdown-text">Deep Learning for TS</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./ts/other.html">
+    <a class="dropdown-item" href="../ts/other.html">
  <span class="dropdown-text">Other: Interrupted TS/ARFIMA/Spectral Analysis</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./conclusions/conclusion.html"> 
+    <a class="nav-link" href="../conclusions/conclusion.html"> 
 <span class="menu-text">Conclusions</span></a>
   </li>  
 </ul>
@@ -158,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Time series Analysis</h1>
+<h1 class="title">ts</h1>
 </div>
 
 
@@ -181,8 +181,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>What is a Time Series? A time series is any sequence of measurements taken at regular, equally spaced intervals—seconds, minutes, hours, days, months, quarters, or years. Common examples include weather (daily temperature or rainfall), financial markets (daily stock prices or returns), industry indicators (monthly production or sales), electricity demand, traffic counts, and hospital admissions. In time-series analysis we study how these values evolve: their level, trend, seasonal or calendar patterns (e.g., weekdays vs.&nbsp;weekends, holiday effects), cycles, and anomalies. Typical goals are to describe behavior clearly, forecast future values, and quantify the impact of events or policies.</p>
-<p>Because observations are ordered in time, nearby points tend to be correlated (autocorrelation). This violates the independent-and-identically-distributed assumption behind many standard statistical methods, so naïve cross-sectional tools often mislead. Time-series work must explicitly handle dependence, trend, and seasonality—for example by differencing, seasonal adjustment, and models that use lagged values and errors (e.g., ARIMA/SARIMA, ARIMAX/SARIMAX with external drivers, VAR for multiple series, state-space/ETS, or GARCH when volatility changes over time). Analysts also watch for structural breaks (e.g., policy shifts, COVID), outliers, and missing periods, and they evaluate models with time-aware validation (rolling or blocked splits) rather than random shuffles.</p>
 
 
 
