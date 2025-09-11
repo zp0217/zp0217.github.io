@@ -1,0 +1,23 @@
+---
+title: "About me"
+format: html
+---
+
+## Myself 
+
+Welcome to my website!!
+
+Hi my name is Zoo un Park and i am a second year student  in the Data science and Analytics program at Georgetown University. Originally from Seoul, South Korea, I graduated   from University of Minnesota-Twin Cities  in 2024 with a B.A. in statistics  and a minor in management from University of Minnesota in 2024. 
+
+
+## Academic interest 
+
+- Baseball Analytics 
+
+- Financial Analysis( specifically investment strategy)
+
+- Deep learning 
+
+- Reinforce learning 
+
+

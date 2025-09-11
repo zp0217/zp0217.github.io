@@ -7,11 +7,11 @@ website:
   navbar:
     left:
     - text: About You
-      href: about_you.qmd
+      href: ./about/about_me.qmd
     - text: Introduction
-      href: introduction.qmd
+      href: ./introduction/introduction.qmd
     - text: Data Sources
-      href: data_sources.qmd
+      href: ./data/data_source.qmd
     - text: Data Visualization
       href: data_visualization.qmd
     - text: Exploratory Data Analysis
@@ -34,6 +34,8 @@ website:
 format:
   html:
     theme: cosmo
+    bibliography:   ./assets/references.bib
+    csl:  ./assets/nature.csl
     toc: true
     code-fold: true
     code-tools: false
