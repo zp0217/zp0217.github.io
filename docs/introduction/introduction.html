@@ -156,7 +156,7 @@ div.csl-indent {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href=".././conclusion/conclusion.qmd"> 
+    <a class="nav-link" href="../conclusions/conclusion.html"> 
 <span class="menu-text">Conclusions</span></a>
   </li>  
 </ul>
@@ -179,8 +179,8 @@ div.csl-indent {
   <li><a href="#big-picture" id="toc-big-picture" class="nav-link" data-scroll-target="#big-picture">Big picture</a></li>
   <li><a href="#analytical-angels" id="toc-analytical-angels" class="nav-link" data-scroll-target="#analytical-angels">Analytical Angels</a></li>
   <li><a href="#guiding-questions" id="toc-guiding-questions" class="nav-link" data-scroll-target="#guiding-questions">Guiding Questions</a></li>
-  <li><a href="#literature-reviews" id="toc-literature-reviews" class="nav-link" data-scroll-target="#literature-reviews">literature reviews</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">references</a></li>
+  <li><a href="#literature-reviews" id="toc-literature-reviews" class="nav-link" data-scroll-target="#literature-reviews">Literature reviews</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -221,15 +221,16 @@ div.csl-indent {
 <section id="big-picture" class="level1">
 <h1>Big picture</h1>
 <p>This project focuses on four widely used and highly influential currencies—the US dollar (USD), euro (EUR), British pound (GBP), and Japanese yen (JPY). These are not just FX workhorses; they also anchor activity in other markets like equities, bonds, commodities, and ETFs. When they move, portfolio returns, hedging costs, and corporate earnings move with them.</p>
-<p>goal of this project is to study how these four exchange rates evolve over time and how they interact with the broader investment universe. Using a data-science approach—cleaning and aligning public time-series data, modeling seasonality and volatility, testing structural breaks—we will examine (i) how interest-rate differentials and yield-curve shifts map into FX returns, (ii) how trade and current-account dynamics shape medium-term trends, (iii) how equity stress, credit spreads, and oil shocks(gold) spill over into currencies, (iv) what investors gain or lose by hedging foreign-equity exposure, (v) who “leads” whom within the USD–EUR–GBP–JPY complex.</p>
+<p>Goal of this project is to study how these four exchange rates evolve over time and how they interact with the broader investment universe. Using a data-science approach—cleaning and aligning public time-series data, modeling seasonality and volatility, testing structural breaks—we will examine (i) how interest-rate differentials and yield-curve shifts map into FX returns, (ii) how trade and current-account dynamics shape medium-term trends, (iii) how equity stress, credit spreads, and oil shocks(gold) spill over into currencies, (iv) what investors gain or lose by hedging foreign-equity exposure, (v) who “leads” whom within the USD–EUR–GBP–JPY complex.</p>
 <p>By the end, we aim to translate these signals into clear, practical guidance: when hedging tends to help, which risk states matter most, and how FX connects the dots between the real economy and financial markets.</p>
+<p><img src="../image/big_picture.png" class="img-fluid"></p>
 </section>
 <section id="analytical-angels" class="level1">
 <h1>Analytical Angels</h1>
 <ul>
 <li><p>major currency in FX market : USD–EUR–GBP–JPY — See how the four big currencies move together, who leads, and when that changes.</p></li>
 <li><p>Rates &amp; Curves → Currency Moves — Test whether interest-rate gaps and bond-curve shape help - predict near-term currency moves.</p></li>
-<li><p>Trade &amp; External Balances → FX — Remove regular seasonal patterns in trade data and check if changes line up with currency trends.(macro-perspective)</p></li>
+<li><p>Trade &amp; External Balances → FX — Remove regular seasonal patterns in trade data and check if changes line up with currency trends.</p></li>
 <li><p>Cross-Asset Risk &amp; Shock Transmission — Measure how stock sell-offs, credit stress, and oil swings spill over into currencies.</p></li>
 <li><p>Equity Exposure &amp; Currency Hedging — Turn the insights into a simple rule for when hedging foreign stocks helps.</p></li>
 </ul>
@@ -250,14 +251,10 @@ div.csl-indent {
 </ol>
 </section>
 <section id="literature-reviews" class="level1">
-<h1>literature reviews</h1>
-<ul>
-<li><p>exchange<span class="citation" data-cites="rossi2013-exchange-rate-predictability"><sup><a href="#ref-rossi2013-exchange-rate-predictability" role="doc-biblioref">2</a></sup></span></p></li>
-<li><p>currency fluctuation<span class="citation" data-cites="engel2016-exchange-rates-risk-premium"><sup><a href="#ref-engel2016-exchange-rates-risk-premium" role="doc-biblioref">3</a></sup></span></p></li>
-<li><p>trade<span class="citation" data-cites="ma-schmidt-eisenlohr-2025-financial-channel"><sup><a href="#ref-ma-schmidt-eisenlohr-2025-financial-channel" role="doc-biblioref">4</a></sup></span></p></li>
-<li><p>asset risk<span class="citation" data-cites="lee2022-volatility-spillovers-oil-uncertainty"><sup><a href="#ref-lee2022-volatility-spillovers-oil-uncertainty" role="doc-biblioref">5</a></sup></span></p></li>
-<li><p>equity hedging<span class="citation" data-cites="PAGNOTTONI2024129948"><sup><a href="#ref-PAGNOTTONI2024129948" role="doc-biblioref">6</a></sup></span></p></li>
-</ul>
+<h1>Literature reviews</h1>
+<p>Research on currencies consistently finds they are hard to forecast in a stable, always-works way. Broad surveys show that many models do no better than a simple “no-change” guess and that any apparent pattern tends to come and go, depending on the period and the market backdrop<span class="citation" data-cites="rossi2013-exchange-rate-predictability"><sup><a href="#ref-rossi2013-exchange-rate-predictability" role="doc-biblioref">2</a></sup></span>. For a practical time-series study of USD, EUR, GBP, and JPY, this means beginning with a clear picture of how these four move together over time, testing whether relationships are stable or shifting, and comparing every result to that simple benchmark so we don’t over-interpret noise.</p>
+<p>When we add economic context, studies show that interest rates do help, but their effect on exchange rates depends on market conditions. Rate gaps and the shape of bond yields matter because investors demand a changing “risk premium,” so the same rate difference can have different effects in calm vs.&nbsp;stressful periods<span class="citation" data-cites="engel2016-exchange-rates-risk-premium"><sup><a href="#ref-engel2016-exchange-rates-risk-premium" role="doc-biblioref">3</a></sup></span>. On the real-economy side, newer work after 2020 highlights a financial channel: a stronger U.S. dollar can tighten global financing and slow non-U.S. trade, beyond textbook price effects. That suggests using monthly trade figures that are cleaned for seasonal patterns and also keeping an eye on indicators of financial tightness when relating trade to currency moves<span class="citation" data-cites="ma-schmidt-eisenlohr-2025-financial-channel"><sup><a href="#ref-ma-schmidt-eisenlohr-2025-financial-channel" role="doc-biblioref">4</a></sup></span>.</p>
+<p>Currencies also move with the wider market. Evidence since 2020 shows that oil-price uncertainty can ripple through stocks, bonds, and exchange rates, which encourages tracking how those connections strengthen or weaken over time and checking how currencies react after shocks such as an oil spike or an equity sell-off<span class="citation" data-cites="lee2022-volatility-spillovers-oil-uncertainty"><sup><a href="#ref-lee2022-volatility-spillovers-oil-uncertainty" role="doc-biblioref">5</a></sup></span>. Finally, when turning findings into portfolio actions, research supports dynamic currency hedging—adjusting the hedge as conditions change—rather than a single, fixed rule, provided we keep trading costs and turnover in check; this approach is straightforward to test using widely available, investable funds<span class="citation" data-cites="PAGNOTTONI2024129948"><sup><a href="#ref-PAGNOTTONI2024129948" role="doc-biblioref">6</a></sup></span>.</p>
 </section>
 <section id="references" class="level1">
 
@@ -266,7 +263,7 @@ div.csl-indent {
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">references</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-currency-photo" class="csl-entry" role="listitem">
 <div class="csl-left-margin">1. </div><div class="csl-right-inline">Currency photo, HowStuffWorks, money.howstuffworks.com/strongest-currency-in-the-world.htm.</div>
 </div>

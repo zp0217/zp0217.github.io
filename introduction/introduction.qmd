@@ -16,9 +16,12 @@ The foreign-exchange (FX) market is where those prices are set. It is a cornerst
 
 This project focuses on four widely used and highly influential currencies—the US dollar (USD), euro (EUR), British pound (GBP), and Japanese yen (JPY). These are not just FX workhorses; they also anchor activity in other markets like equities, bonds, commodities, and ETFs. When they move, portfolio returns, hedging costs, and corporate earnings move with them.
 
-goal of this project is to study how these four exchange rates evolve over time and how they interact with the broader investment universe. Using a data-science approach—cleaning and aligning public time-series data, modeling seasonality and volatility, testing structural breaks—we will examine (i) how interest-rate differentials and yield-curve shifts map into FX returns, (ii) how trade and current-account dynamics shape medium-term trends, (iii) how equity stress, credit spreads, and oil shocks(gold) spill over into currencies, (iv) what investors gain or lose by hedging foreign-equity exposure, (v) who “leads” whom within the USD–EUR–GBP–JPY complex.
+Goal of this project is to study how these four exchange rates evolve over time and how they interact with the broader investment universe. Using a data-science approach—cleaning and aligning public time-series data, modeling seasonality and volatility, testing structural breaks—we will examine (i) how interest-rate differentials and yield-curve shifts map into FX returns, (ii) how trade and current-account dynamics shape medium-term trends, (iii) how equity stress, credit spreads, and oil shocks(gold) spill over into currencies, (iv) what investors gain or lose by hedging foreign-equity exposure, (v) who “leads” whom within the USD–EUR–GBP–JPY complex.
 
 By the end, we aim to translate these signals into clear, practical guidance: when hedging tends to help, which risk states matter most, and how FX connects the dots between the real economy and financial markets.
+
+
+![](/image/big_picture.png)
 
 
 
@@ -28,7 +31,7 @@ By the end, we aim to translate these signals into clear, practical guidance: wh
 
 - Rates & Curves → Currency Moves — Test whether interest-rate gaps and bond-curve shape help - predict near-term currency moves.
 
-- Trade & External Balances → FX — Remove regular seasonal patterns in trade data and check if changes line up with currency trends.(macro-perspective)
+- Trade & External Balances → FX — Remove regular seasonal patterns in trade data and check if changes line up with currency trends.
 
 - Cross-Asset Risk & Shock Transmission — Measure how stock sell-offs, credit stress, and oil swings spill over into currencies.
 
@@ -62,24 +65,13 @@ By the end, we aim to translate these signals into clear, practical guidance: wh
 
 
 
-# literature reviews
+# Literature reviews
 
-- exchange
-@rossi2013-exchange-rate-predictability
+Research on currencies consistently finds they are hard to forecast in a stable, always-works way. Broad surveys show that many models do no better than a simple “no-change” guess and that any apparent pattern tends to come and go, depending on the period and the market backdrop [@rossi2013-exchange-rate-predictability]. For a practical time-series study of USD, EUR, GBP, and JPY, this means beginning with a clear picture of how these four move together over time, testing whether relationships are stable or shifting, and comparing every result to that simple benchmark so we don’t over-interpret noise.
 
-- currency fluctuation
-@engel2016-exchange-rates-risk-premium
+When we add economic context, studies show that interest rates do help, but their effect on exchange rates depends on market conditions. Rate gaps and the shape of bond yields matter because investors demand a changing “risk premium,” so the same rate difference can have different effects in calm vs. stressful periods [@engel2016-exchange-rates-risk-premium]. On the real-economy side, newer work after 2020 highlights a financial channel: a stronger U.S. dollar can tighten global financing and slow non-U.S. trade, beyond textbook price effects. That suggests using monthly trade figures that are cleaned for seasonal patterns and also keeping an eye on indicators of financial tightness when relating trade to currency moves [@ma-schmidt-eisenlohr-2025-financial-channel].
 
-- trade 
-@ma-schmidt-eisenlohr-2025-financial-channel
-
-- asset risk
-@lee2022-volatility-spillovers-oil-uncertainty
-
-- equity hedging 
-@PAGNOTTONI2024129948
+Currencies also move with the wider market. Evidence since 2020 shows that oil-price uncertainty can ripple through stocks, bonds, and exchange rates, which encourages tracking how those connections strengthen or weaken over time and checking how currencies react after shocks such as an oil spike or an equity sell-off [@lee2022-volatility-spillovers-oil-uncertainty]. Finally, when turning findings into portfolio actions, research supports dynamic currency hedging—adjusting the hedge as conditions change—rather than a single, fixed rule, provided we keep trading costs and turnover in check; this approach is straightforward to test using widely available, investable funds [@PAGNOTTONI2024129948].
 
 
-
-# references
-
+# References 
