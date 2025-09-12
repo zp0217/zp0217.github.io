@@ -3,25 +3,58 @@ title: "DATA SOURCES"
 format: html
 ---
 
-# Data source 1: FRED data(all four currencies)
+
+# Data source 1: FX spot rate data (all four currencies)
+
+These data are the day-to-day prices of the euro, pound, and yen against the U.S. dollar. They’re the core “what actually moved” series for this project. from these data, it is possible to observe trends and turning points, measure daily changes, and check how the big currencies move together over time.
+
+[Euro data](https://fred.stlouisfed.org/series/DEXUSEU)
+
+[Pound Sterling data](https://fred.stlouisfed.org/series/DEXUSUK)
+
+[Japanese Yen data](https://fred.stlouisfed.org/series/DEXJPUS)
 
 
+# Data source 2: BIS data portal(effective exchange rate)
+
+Instead of looking at one pair(data source 1), these indices show how a currency is doing against a basket of trading partners (and, for REER, adjust for inflation). This data gives a more fair view of international competitiveness. It helps to connect currency moves to trade and make sure findings aren’t just about the dollar.
+
+[BIS data](https://data.bis.org/topics/EER/data)
 
 
-# Data source 2: Yahoo finance
+# Data source 3: Yahoo finance
 
-https://finance.yahoo.com/
+[yahoo finance](https://finance.yahoo.com/)
+
+yahoo finance is a great tool to get stock related data in easy way. for this project, yahoo finance data will be utilize by getting products related to currency-hedging and S&P500 ETFs. 
+
+# Data source 4:  trade data for US
+
+this Dataset shows US international transaction in both import and export on goods and service. US has a largest market size, which assumes to be influential than any other country in terms of currency and trade relationship. this data will be helpful for trade and currecny anaylsis. 
+
+[us trade data](https://apps.bea.gov/itable/?reqid=62&step=1&_gl=1*cj0nip*_ga*NDE0NjMxMDI1LjE3MzgwOTQyNDE.*_ga_J4698JNNFT*MTczODE4MjUyNC4zLjEuMTczODE4MjUyOS41NS4wLjA.#eyJhcHBpZCI6NjIsInN0ZXBzIjpbMSwyLDYsNl0sImRhdGEiOltbIlByb2R1Y3QiLCIxIl0sWyJUYWJsZUxpc3QiLCIxIl0sWyJGaWx0ZXJfIzEiLFsiMSIsIjIiLCIzIiwiNCIsIjUiLCI2IiwiNyIsIjgiLCI5IiwiMTAiLCIxMSIsIjEyIiwiMTMiLCIxNCIsIjE1IiwiMTYiLCIxNyIsIjE4IiwiMTkiLCIyMCJdXSxbIkZpbHRlcl8jMiIsWyIyIl1dLFsiRmlsdGVyXyMzIixbIjMiLCIxMSIsIjIyIiwiMjciXV0sWyJGaWx0ZXJfIzQiLFsiMCJdXSxbIkZpbHRlcl8jNSIsWyIwIl1dXX0=)
+
+# Data source 5:  FRED data on WTI Crude Oil price
+this dataset has crude oil price data. Oil is a global barometer that touches growth, inflation, and trade costs—especially relevant for Europe and Japan. By tracking oil, we can test whether energy shocks spill into currency moves (for example, whether sharp oil spikes push certain currencies up or down).
+
+[oil price data](https://fred.stlouisfed.org/series/DCOILWTICO)
+
+# Data source 6: VIX data
+
+this dataset has a VIX data in verious assets such as gold, S&P500,options, oil,etc. 
+VIX rises when investors are nervous. Watching it alongside currencies helps us see whether the dollar or yen tend to strengthen in stressful times. It’s a simple way to capture the risk mood of markets in our analysis.
+
+[VIX data](https://www.cboe.com/tradable_products/vix/vix_historical_data/)
 
 
-# Data source 3: BIS data portal(effective exchange rate)
-bank for international settlement
+# Data source 7: Yield Curve
 
-https://data.bis.org/topics/EER/data
+these data set are yield curve data for US,Japan,Uk and Euro.These are benchmark borrowing costs for each region in the short and long run. The gap between long and short period (“the slope”)(also depending on country maturity could be different) reflects expectations about growth and inflation. We use this to check whether the market’s outlook lines up with currency shifts.
 
+[US yield curve](https://fred.stlouisfed.org/series/DGS10)
 
+[japan yield curve](https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate)
 
-# Data source 4:  FRED data on US treasury securities
+[UK yield curve](https://www.bankofengland.co.uk/statistics/yield-curves)
 
-
-
-# Data source 5:  
+[euro yield curve](https://data.ecb.europa.eu/data/datasets/YC?dataset%5B0%5D=Financial%20market%20data%20-%20yield%20curve%20%28YC%29&filterSequence=dataset&advFilterDataset%5B0%5D=Financial%20market%20data%20-%20yield%20curve%20%28YC%29)
