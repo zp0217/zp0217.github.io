@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Financial Time Series Models(ARCH/GARCH)"
 format: html
 ---
 

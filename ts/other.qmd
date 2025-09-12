@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Other: Interrupted TS/ARFIMA/Spectral Analysis"
 format: html
 ---
 
