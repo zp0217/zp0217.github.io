@@ -19,9 +19,16 @@ library(lubridate)
 
 ## exchange rates
 
+
 ```{=html}
 <div class='tableauPlaceholder' id='viz1758825885235' style='position: relative'><noscript><a href='#'><img alt='Dashboard 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;jp&#47;jpy&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='jpy&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;jp&#47;jpy&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1758825885235');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='927px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 ```
+
+
+
+Understanding how major currencies behave relative to the U.S. dollar is a key starting point. The first plot shows the direct exchange rates of the Japanese yen (JPY), the euro (EUR), and the British pound (GBP) against the U.S. dollar. Overall, the three currencies tend to follow broadly similar cycles, reflecting global macroeconomic conditions, though each retains its own distinct story tied to local policy and events.
+
+
 
 # FX rate performace
 
@@ -75,6 +82,10 @@ plot_ly(fx_indexed, x = ~date, y = ~idx100, color = ~pair,
 
 ```
 
+
+To make comparisons clearer across currencies with different absolute values, the second plot re-expresses these series as performance indices, with all currencies set to a base of 100 at the start of 2000. From this common starting point, differences in long-term trends become visible. The euro shows strong early gains, peaking just before the global financial crisis, then retreating through the eurozone debt crisis before settling into a choppier range. Sterling reveals the steepest long-term decline, marked by sharp losses during the 2008 financial crisis and again following the 2016 Brexit referendum, with a new low around 2022 before some stabilization. The yen, meanwhile, strengthens sharply during risk-off episodes like 2008–09, but then weakens through the Abenomics and yield-curve-control period, sliding further into 2023–24 before a modest recovery. These divergences highlight how global shocks and country-specific policy choices—such as the GFC, the eurozone debt crisis, Brexit, and Japan’s monetary regime—shape both absolute exchange rates and relative performance over time.
+
+
 ### Effective exchange rate 
 ```{r,warning = F,message = F}
 #| echo: true
@@ -110,6 +121,11 @@ ggplot(df, aes(x = Date)) +
   theme_minimal()
 
 ```
+
+
+
+The real effective exchange rate (REER) looks past simple dollar comparisons by adjusting for inflation and trade weights, offering a clearer picture of each currency’s competitiveness. In this view, slower-moving structural shifts become more apparent: the euro’s early strength and subsequent decline during the sovereign debt crisis, the yen’s prolonged undervaluation through years of ultra-loose policy, and sterling’s steady erosion around Brexit and the 2022 energy shock. A REER reading below the 2020 base value of 100 signals a cheaper, more competitive currency, while values above 100 point to relative overvaluation. Unlike the indexed FX plot, which highlights short-term swings against the dollar, the REER emphasizes deeper, long-run changes in purchasing power and trade balance dynamics.
+
 
 
 ### data cleaning for yield curves and code for plots
@@ -259,6 +275,10 @@ uk_curve
 ```
 :::
 
+
+The yield curve plots for Japan, the U.S., the euro area, and the U.K. reveal how each economy experienced the global tightening cycle in its own way. In Japan, the 2Y and 10Y yields were held near zero for years under negative rates and yield curve control, leaving the curve unnaturally flat until 2023–24, when the BoJ began loosening its grip and long-term yields finally adjusted upward. In the U.S., rapid Fed hikes in 2022–23 drove the 2Y sharply higher, while the 10Y lagged, producing one of the deepest inversions in decades before signs of steepening emerged as growth expectations stabilized. The euro area saw the ECB raise rates later, with 2Y yields jumping in response, while the 10Y stayed more restrained due to weak growth prospects and sovereign debt sensitivities. In the U.K., yields reflected both high inflation and fiscal credibility: the 2Y surged with persistent inflation, while the 10Y showed episodes of market stress, most dramatically during the 2022 “mini-budget” crisis. Viewed together, these curves capture the common theme of inflation-driven tightening but also the distinct vulnerabilities and policy legacies shaping each market.
+
+
 ## spreads for four countries
 
 ```{r}
@@ -302,6 +322,13 @@ combined_plot <- plot_ly(aligned, x = ~Date) %>%
 combined_plot
 
 ```
+
+to the extent from government bond yield curve, this plot is a spread graph for 10years vs 2 years. 
+The yield curve spread — the gap between long-term (10Y) and short-term (2Y) bond yields — condenses the full yield curve into a single, easy-to-read signal. Normally, the 10Y sits above the 2Y because investors demand compensation for lending further into the future. When the spread narrows or turns negative, it reflects either central banks driving short rates sharply higher or markets anticipating weaker growth ahead. For this reason, the 10Y–2Y spread is one of the most closely followed indicators of the business cycle.
+
+Linking back to the previous yield plots, the spread highlights in one line what was visible across four separate curves. In the U.S., rapid Fed hikes lifted 2Y yields above 10Y yields, creating a deep inversion in 2022–23 that matched the flattening shown in the U.S. yield curve panel. In the euro area, a later and milder tightening cycle kept inversions shallower, consistent with the weaker 10Y response seen earlier. In the U.K., spreads swung more violently, echoing the gilt turmoil of the 2022 mini-budget and the inflation-driven spikes visible in both ends of the curve. Meanwhile, Japan remained flat for decades under yield curve control, and only after 2023 did its spread widen modestly as the BoJ began dismantling its policy framework.
+
+By compressing the story of the individual yield curves, the spread plot makes it easier to compare cycles across countries. It shows not only where each economy sits in the global tightening narrative, but also how quickly — or slowly — their policies allow the curve to invert and recover.
 
 ### data cleaning & plot code for oil price,sp500 price, bitcoin price
 
@@ -440,3 +467,12 @@ sp_plot
 ```
 
 :::
+
+
+Oil prices and volatility (OILVIX) capture the most direct link between geopolitics, supply shocks, and inflation. Spikes in both price and volatility — such as during the 2022 energy shock following Russia’s invasion of Ukraine — fed directly into the inflation pressures that drove central banks to tighten policy, which we saw earlier in the steep climbs of 2Y yields. When oil trends higher with calmer volatility, it signals demand-led growth rather than supply stress, tying back to the more reflationary phases of the yield curves.
+
+The S&P 500 vs. VVIX reflects how equity markets absorb those same cycles. Periods of rising policy rates and yield-curve inversions often coincide with weaker equity performance and elevated volatility-of-volatility, as investors hedge against uncertainty. Conversely, when the curve begins to steepen again — signaling expectations of easing — equities tend to recover and VVIX subsides. This makes equities a natural “mirror” to the fixed-income story told in the spread plot.
+
+Finally, Bitcoin and its volatility offer a high-beta, speculative lens on the same macro environment. Crypto tends to rally during periods of abundant liquidity and risk-on sentiment, but volatility spikes sharply around regime shifts, such as the 2024 halving event. Its behavior often amplifies what is seen in equities: confidence during easing cycles, stress during tightening phases.
+
+Together, these three panels illustrate how macro forces traced through FX and yields cascade into commodities, equities, and crypto. Oil shapes inflation and policy responses, equities reflect growth expectations and investor sentiment, and Bitcoin amplifies the extremes of risk appetite. Read alongside the earlier plots, they complete the picture of how global shocks ripple across every corner of the financial system.
