@@ -198,8 +198,8 @@ aligned <- merged %>% filter(Date >= common_start)
 
 jp_curve <- plot_ly(merged, x = ~Date, y = ~JP_2Y,
                     type = 'scatter', mode = 'lines', name = "Japan 2Y") %>%
-  add_lines(y = ~JP_9Y, name = "Japan 9Y") %>%
-  layout(title = "Japan Yield Curve (2Y & 9Y)",
+  add_lines(y = ~JP_9Y, name = "Japan 10Y") %>%
+  layout(title = "Japan Yield Curve (2Y & 10Y)",
          xaxis = list(title = "Date"),
          yaxis = list(title = "Yield (%)"))
 
@@ -267,8 +267,8 @@ uk_curve
 
 
 jp_plot <- plot_ly(aligned, x = ~Date, y = ~JP_Spread, type = 'scatter', mode = 'lines',
-                   name = "Japan (9Y-2Y)") %>%
-  layout(title = "Japan Yield Curve Spread (9Y-2Y)",
+                   name = "Japan (10Y-2Y)") %>%
+  layout(title = "Japan Yield Curve Spread (10Y-2Y)",
          xaxis = list(title = "Date"),
          yaxis = list(title = "Spread (%)"))
 
@@ -291,7 +291,7 @@ uk_plot <- plot_ly(aligned, x = ~Date, y = ~UK_Spread, type = 'scatter', mode = 
          yaxis = list(title = "Spread (%)"))
 
 combined_plot <- plot_ly(aligned, x = ~Date) %>%
-  add_lines(y = ~JP_Spread, name = "Japan (9Y-2Y)") %>%
+  add_lines(y = ~JP_Spread, name = "Japan (10Y-2Y)") %>%
   add_lines(y = ~US_Spread, name = "US (10Y-2Y)") %>%
   add_lines(y = ~EU_Spread, name = "Euro (10Y-2Y)") %>%
   add_lines(y = ~UK_Spread, name = "UK (10Y-2Y)") %>%
