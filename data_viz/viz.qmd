@@ -4,7 +4,7 @@ format: html
 code-fold: true
 ---
 
-### library
+### packages used
 ```{r,message = F,warning = F}
 #| echo: true
 #| code-fold: true
@@ -147,11 +147,11 @@ clean_numeric <- function(x) {
 }
 
 japan_clean <- japan %>%
-  select(Date = 1, JP_2Y = 3, JP_9Y = 10) %>%
+  select(Date = 1, JP_2Y = 3, JP_10Y = 10) %>%
   mutate(
     Date  = suppressWarnings(parse_date_time(Date, orders = c("Ymd", "Y/m/d", "Y-m-d"))),
     JP_2Y = clean_numeric(JP_2Y),
-    JP_9Y = clean_numeric(JP_9Y)
+    JP_10Y = clean_numeric(JP_10Y)
   ) %>%
   filter(!is.na(Date))   
 
@@ -192,7 +192,7 @@ merged <- japan_clean %>%
 
 merged <- merged %>%
   mutate(
-    JP_Spread  = JP_9Y  - JP_2Y,
+    JP_Spread  = JP_10Y  - JP_2Y,
     US_Spread  = US_10Y - US_2Y,
     EU_Spread  = EU_10Y - EU_2Y,
     UK_Spread  = UK_10Y - UK_2Y
@@ -214,7 +214,7 @@ aligned <- merged %>% filter(Date >= common_start)
 
 jp_curve <- plot_ly(merged, x = ~Date, y = ~JP_2Y,
                     type = 'scatter', mode = 'lines', name = "Japan 2Y") %>%
-  add_lines(y = ~JP_9Y, name = "Japan 10Y") %>%
+  add_lines(y = ~JP_10Y, name = "Japan 10Y") %>%
   layout(title = "Japan Yield Curve (2Y & 10Y)",
          xaxis = list(title = "Date"),
          yaxis = list(title = "Yield (%)"))
@@ -245,6 +245,9 @@ us_curve
 eu_curve
 uk_curve
 ```
+
+
+
 
 ## yield curve for four countries
 
@@ -383,6 +386,7 @@ btc <- read_csv(
   )
 )
 
+
 btc_vol <- read_csv(here("data/btc","btcvol.csv")) %>%
   mutate(date = as.Date(date))
 
@@ -400,7 +404,7 @@ btc_plot <- plot_ly(btc_all, x = ~Date) %>%
   add_lines(y = ~volatility60, name = "60-day Volatility", line = list(color = "darksalmon", width = 2), yaxis = "y2") %>%
   layout(
     title = "Bitcoin Price vs Volatility (Daily & 60-day)",
-    yaxis = list(title = "BTC Price (USD)", type = "log"),  # 가격 로그 스케일
+    yaxis = list(title = "BTC Price (USD)", type = "log"), 
     yaxis2 = list(title = "Volatility", overlaying = "y", side = "right"),
     legend = list(x = 0.1, y = 0.9)
   )
@@ -441,12 +445,18 @@ sp_plot <- plot_ly(sp500_all, x = ~Date) %>%
             yaxis = "y2") %>%
   layout(
     title = "S&P500 Index vs VVIX",
-    yaxis = list(title = "S&P500 Index", type = "log"),   # 로그 스케일
+    yaxis = list(title = "S&P500 Index", type = "log"),   
     yaxis2 = list(title = "VVIX", overlaying = "y", side = "right"),
     legend = list(x = 0.1, y = 0.9)
   )
 
 
+```
+
+```{r}
+write_csv(btc,"btc_cleaned.csv")
+write_csv(sp500,"sp500_cleaned.csv")
+write_csv(oil_price,"oil_cleaned.csv")
 ```
 
 ::: panel-tabset

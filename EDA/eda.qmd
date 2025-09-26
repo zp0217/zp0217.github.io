@@ -1,5 +1,232 @@
 ---
-title: "Exploratory Data Analysis"
 format: html
+
 ---
+
+### packages used
+
+```{r,message = F,warning = F}
+#| echo: true
+#| code-fold: true
+
+library(tidyverse)
+library(lubridate)
+library(zoo)       
+library(forecast)   
+library(tseries)   
+library(patchwork) 
+library(here)
+library(plotly)
+```
+
+
+### time series plot
+
+::: panel-tabset
+
+
+### EUR/USD Exchange Rate
+```{r,warning = F,message = F}
+
+eu = read.csv("../data/fx rate/EU_US.csv") 
+eu <- eu %>% mutate(observation_date = as.Date(observation_date))%>%
+  rename(EUR_USD = DEXUSEU)%>%
+  mutate(EUR_USD = na.locf(EUR_USD, na.rm = FALSE))
+
+eu_plot<- ggplot(eu, aes(x = observation_date, y = EUR_USD)) +
+  geom_line(color = "blue") +
+  labs(title = "EUR/USD Exchange Rate",
+       x = "Date", y = "EUR(EUR per 1 USD)") +
+  theme_minimal()
+
+
+eu_plot 
+```
+
+### GBP/USD Exchange Rate
+```{r,warning = F,message = F}
+#| echo: true
+#| code-fold: true
+
+uk = read.csv("../data/fx rate/UK_US.csv") 
+uk <- uk %>% mutate(observation_date = as.Date(observation_date))%>%
+  rename(UK_USD = DEXUSUK)%>%
+  mutate(UK_USD = na.locf(UK_USD, na.rm = FALSE))
+
+uk_plot <- ggplot(uk, aes(x = observation_date, y = UK_USD)) +
+  geom_line(color = "blue") +
+  labs(title = "GBP/USD Exchange Rate",
+       x = "Date", y = "GBP(GBP per 1 USD)") +
+  theme_minimal()
+
+uk_plot
+```
+
+
+
+### JPY/USD Exchange Rate
+```{r,warning = F,message = F}
+#| echo: true
+#| code-fold: true
+
+
+jp <- read_csv("../data/fx rate/JP_US.csv") %>%
+  mutate(observation_date = as.Date(observation_date)) %>%
+  rename(JP_USD = DEXJPUS,
+         Date   = observation_date) %>%
+  mutate( JP_USD = na.locf(JP_USD, na.rm = FALSE),
+          USD_JP = 1 / JP_USD)  
+
+jp_plot <- ggplot(jp, aes(x = Date, y = USD_JP)) +
+  geom_line(color = "blue") +
+  labs(title = "JPY/USD Exchange Rate ",
+       x = "Date", y = "JPY(JPY per 1 USD)") +
+  theme_minimal()
+
+jp_plot
+```
+
+
+### Crude oil
+
+```{r,warning = F,message = F}
+#| echo: true
+#| code-fold: true
+
+crude_oil <- read_csv(here("data/oil","oil_cleaned.csv")) %>%
+  mutate(Date = as.Date(Date)) %>%
+  arrange(Date) %>%
+  mutate(across(-Date, ~ na.locf(.x, na.rm = FALSE)))
+
+ggplot(crude_oil, aes(x = Date, y = WTI)) +
+  geom_line(color = "darkgreen") +
+  labs(title = "Crude Oil Prices", x = "Date", y = "Price") +
+  theme_minimal()
+```
+
+### S&P 500 index 
+
+```{r,warning = F,message = F}
+#| echo: true
+#| code-fold: true
+
+sp500 <- read_csv(here("data/sp500","sp500_cleaned.csv")) %>%
+  mutate(Date = as.Date(Date)) %>%
+  arrange(Date) %>%
+  mutate(across(-Date, ~ na.locf(.x, na.rm = FALSE)))
+
+ggplot(sp500, aes(x = Date, y = Close)) +
+  geom_line(color = "blue") +
+  labs(title = "S&P 500 Index", x = "Date", y = "Level") +
+  theme_minimal()
+```
+
+### Bitcoin 
+
+```{r,warning = F,message = F}
+#| echo: true
+#| code-fold: true
+
+btc <- read_csv(here("data/btc","btc_cleaned.csv")) %>%
+  mutate(Date = as.Date(Date)) %>%
+  arrange(Date) %>%
+  mutate(across(-Date, ~ na.locf(.x, na.rm = FALSE)))
+
+ggplot(btc, aes(x = Date, y = Close)) +
+  geom_line(color = "gold") +
+  labs(title = "Bitcoin Price", x = "Date", y = "Price") +
+  theme_minimal()
+
+```
+
+
+
+### japan yield spread (10years-2years)
+
+```{r,warning = F,message = F}
+#| echo: true
+#| code-fold: true
+
+spread<- read_csv("../data/yield/merge_yield.csv")%>%
+mutate(Date = as.Date(Date),
+         Year = lubridate::year(Date)) %>%    
+  arrange(Date)%>%
+  mutate(across(ends_with("_spread"), ~ na.locf(.x, na.rm = FALSE))) %>%
+  mutate(across(ends_with("_spread"), ~ na.locf(.x, fromLast = TRUE)))
+
+jp_plot <- plot_ly(spread, x = ~Date, y = ~JP_Spread, type = 'scatter', mode = 'lines',
+                   name = "Japan (10Y-2Y)") %>%
+  layout(title = "Japan Yield Curve Spread (10Y-2Y)",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Spread (%)"))
+jp_plot
+```
+
+### EU yield spread (10years-2years)
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+spread<- read_csv("../data/yield/merge_yield.csv")%>%
+mutate(Date = as.Date(Date),
+         Year = lubridate::year(Date)) %>%    
+  arrange(Date)%>%
+  mutate(across(ends_with("_spread"), ~ na.locf(.x, na.rm = FALSE))) %>%
+  mutate(across(ends_with("_spread"), ~ na.locf(.x, fromLast = TRUE)))
+
+eu_plot <- plot_ly(spread, x = ~Date, y = ~EU_Spread, type = 'scatter', mode = 'lines',
+                   name = "EU (10Y-2Y)") %>%
+  layout(title = "EU Yield Curve Spread (10Y-2Y)",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Spread (%)"))
+eu_plot
+```
+
+### UK yield spread (10years-2years)
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+spread<- read_csv("../data/yield/merge_yield.csv")%>%
+mutate(Date = as.Date(Date),
+         Year = lubridate::year(Date)) %>%    
+  arrange(Date)%>%
+  mutate(across(ends_with("_spread"), ~ na.locf(.x, na.rm = FALSE))) %>%
+  mutate(across(ends_with("_spread"), ~ na.locf(.x, fromLast = TRUE)))
+
+uk_plot <- plot_ly(spread, x = ~Date, y = ~UK_Spread, type = 'scatter', mode = 'lines',
+                   name = "UK (10Y-2Y)") %>%
+  layout(title = "UK Yield Curve Spread (10Y-2Y)",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Spread (%)"))
+uk_plot
+```
+
+### US yield spread (10years-2years)
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+spread<- read_csv("../data/yield/merge_yield.csv")%>%
+mutate(Date = as.Date(Date),
+         Year = lubridate::year(Date)) %>%    
+  arrange(Date)%>%
+  mutate(across(ends_with("_spread"), ~ na.locf(.x, na.rm = FALSE))) %>%
+  mutate(across(ends_with("_spread"), ~ na.locf(.x, fromLast = TRUE)))
+
+eu_plot <- plot_ly(spread, x = ~Date, y = ~US_Spread, type = 'scatter', mode = 'lines',
+                   name = "US (10Y-2Y)") %>%
+  layout(title = "US Yield Curve Spread (10Y-2Y)",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Spread (%)"))
+eu_plot
+```
+
+:::
+
+time series plots 
+
+
 
