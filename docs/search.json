@@ -40,5 +40,54 @@
     "title": "About me",
     "section": "Academic interest",
     "text": "Academic interest\n\nBaseball Analytics\nFinancial Analysis( specifically investment strategy)\nDeep learning\nReinforce learning"
+  },
+  {
+    "objectID": "data_source/data_source.html",
+    "href": "data_source/data_source.html",
+    "title": "DATA SOURCES",
+    "section": "",
+    "text": "Data source 1: FX spot rate data (all four currencies)\nThese data are the day-to-day prices of the euro, pound, and yen against the U.S. dollar. They’re the core “what actually moved” series for this project. from these data, it is possible to observe trends and turning points, measure daily changes, and check how the big currencies move together over time.\nEuro data\nPound Sterling data\nJapanese Yen data\n\n\nData source 2: BIS data portal(effective exchange rate)\nInstead of looking at one pair(data source 1), these indices show how a currency is doing against a basket of trading partners (and, for REER, adjust for inflation). This data gives a more fair view of international competitiveness. It helps to connect currency moves to trade and make sure findings aren’t just about the dollar.\nBIS data\n\n\nData source 3: Yahoo finance\nyahoo finance\nyahoo finance is a great tool to get stock related data in easy way. for this project, yahoo finance data will be utilize by getting products related to currency-hedging and S&P500 ETFs.\n\n\nData source 4: trade data for US\nthis Dataset shows US international transaction in both import and export on goods and service. US has a largest market size, which assumes to be influential than any other country in terms of currency and trade relationship. this data will be helpful for trade and currecny anaylsis.\nus trade data\n\n\nData source 5: FRED data on WTI Crude Oil price\nthis dataset has crude oil price data. Oil is a global barometer that touches growth, inflation, and trade costs—especially relevant for Europe and Japan. By tracking oil, we can test whether energy shocks spill into currency moves (for example, whether sharp oil spikes push certain currencies up or down).\noil price data\n\n\nData source 6: VIX data\nthis dataset has a VIX data in verious assets such as gold, S&P500,options, oil,etc. VIX rises when investors are nervous. Watching it alongside currencies helps us see whether the dollar or yen tend to strengthen in stressful times. It’s a simple way to capture the risk mood of markets in our analysis.\nVIX data\n\n\nData source 7: Yield Curve\nthese data set are yield curve data for US,Japan,Uk and Euro.These are benchmark borrowing costs for each region in the short and long run. The gap between long and short period (“the slope”)(also depending on country maturity could be different) reflects expectations about growth and inflation. We use this to check whether the market’s outlook lines up with currency shifts.\nUS yield curve\njapan yield curve\nUK yield curve\neuro yield curve"
+  },
+  {
+    "objectID": "data_viz/viz.html#fx-graphs-1",
+    "href": "data_viz/viz.html#fx-graphs-1",
+    "title": "Data Visualization",
+    "section": "FX graphs",
+    "text": "FX graphs"
+  },
+  {
+    "objectID": "data_viz/viz.html",
+    "href": "data_viz/viz.html",
+    "title": "Data Visualization",
+    "section": "",
+    "text": "Code\nlibrary(readr)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(plotly)\nlibrary(ggplot2)\nlibrary(here)\nlibrary(lubridate)"
+  },
+  {
+    "objectID": "data_viz/viz.html#yield-curve-for-four-countries",
+    "href": "data_viz/viz.html#yield-curve-for-four-countries",
+    "title": "Data Visualization",
+    "section": "yield curve for four countries",
+    "text": "yield curve for four countries\n\njapan yield curveUS yield curveeuro yield curveuk yield curve"
+  },
+  {
+    "objectID": "data_viz/viz.html#spreads-for-four-countries",
+    "href": "data_viz/viz.html#spreads-for-four-countries",
+    "title": "Data Visualization",
+    "section": "spreads for four countries",
+    "text": "spreads for four countries\n\n\nCode\njp_plot &lt;- plot_ly(aligned, x = ~Date, y = ~JP_Spread, type = 'scatter', mode = 'lines',\n                   name = \"Japan (9Y-2Y)\") %&gt;%\n  layout(title = \"Japan Yield Curve Spread (9Y-2Y)\",\n         xaxis = list(title = \"Date\"),\n         yaxis = list(title = \"Spread (%)\"))\n\nus_plot &lt;- plot_ly(aligned, x = ~Date, y = ~US_Spread, type = 'scatter', mode = 'lines',\n                   name = \"US (10Y-2Y)\") %&gt;%\n  layout(title = \"US Yield Curve Spread (10Y-2Y)\",\n         xaxis = list(title = \"Date\"),\n         yaxis = list(title = \"Spread (%)\"))\n\neu_plot &lt;- plot_ly(aligned, x = ~Date, y = ~EU_Spread, type = 'scatter', mode = 'lines',\n                   name = \"Euro (10Y-2Y)\") %&gt;%\n  layout(title = \"Euro Yield Curve Spread (10Y-2Y)\",\n         xaxis = list(title = \"Date\"),\n         yaxis = list(title = \"Spread (%)\"))\n\nuk_plot &lt;- plot_ly(aligned, x = ~Date, y = ~UK_Spread, type = 'scatter', mode = 'lines',\n                   name = \"UK (10Y-2Y)\") %&gt;%\n  layout(title = \"UK Yield Curve Spread (10Y-2Y)\",\n         xaxis = list(title = \"Date\"),\n         yaxis = list(title = \"Spread (%)\"))\n\ncombined_plot &lt;- plot_ly(aligned, x = ~Date) %&gt;%\n  add_lines(y = ~JP_Spread, name = \"Japan (9Y-2Y)\") %&gt;%\n  add_lines(y = ~US_Spread, name = \"US (10Y-2Y)\") %&gt;%\n  add_lines(y = ~EU_Spread, name = \"Euro (10Y-2Y)\") %&gt;%\n  add_lines(y = ~UK_Spread, name = \"UK (10Y-2Y)\") %&gt;%\n  layout(title = \"Yield Curve Spreads(10 years vs 2 years) Over Time\",\n         xaxis = list(title = \"Date\"),\n         yaxis = list(title = \"Spread (%)\"))\n\ncombined_plot\n\n\n\n\n\n\n\ndata cleaning & plot code for oil price,sp500 price, bitcoin price\n\n\nCode\n# oil price \noil_price &lt;- read_csv(here(\"data/oil\", \"crude_oil.csv\"))%&gt;%\n  rename(Date = observation_date, WTI = DCOILWTICO) %&gt;%\n  mutate(Date = as.Date(Date),\n         WTI = as.numeric(WTI))\n\noil_vix &lt;- read_csv(here(\"data/oil\",\"oil_vix.csv\"),\n                    col_names = c(\"Date\", \"OILVIX\"),\n                    skip = 1) %&gt;%\n  mutate(Date = as.Date(Date),\n         OILVIX = as.numeric(OILVIX))\n\n\noil_merged &lt;- inner_join(oil_price, oil_vix, by = \"Date\")\n\noil_plot &lt;- plot_ly(oil_merged, x = ~Date) %&gt;%\n  add_lines(y = ~WTI, name = \"WTI Crude oil(USD)\", line = list(color = \"green\")) %&gt;%\n  add_lines(y = ~OILVIX, name = \"Crude oil VIX\", yaxis = \"y2\", line = list(color = \"red\")) %&gt;%\n  layout(\n    title = \"WTI Crude Oil vs OIL VIX\",\n    yaxis = list(title = \"WTI Price (USD)\", side = \"left\"),\n    yaxis2 = list(title = \"OIL VIX\", overlaying = \"y\", side = \"right\"),\n    legend = list(x = 0.1, y = 0.7)\n  )\n\n\n\n\n# bitcoin price\n\nbtc &lt;- read_csv(\n  here(\"data/btc\", \"btc.csv\"),\n  skip = 2,\n  col_names = c(\"Date\",\"Open\",\"High\",\"Low\",\"Close\",\"AdjClose\",\"Volume\"),\n  col_types = cols(\n    Date = col_date(format = \"%Y-%m-%d\"),\n    Open = col_double(),\n    High = col_double(),\n    Low = col_double(),\n    Close = col_double(),\n    AdjClose = col_double(),\n    Volume = col_double()\n  )\n)\n\nbtc_vol &lt;- read_csv(here(\"data/btc\",\"btcvol.csv\")) %&gt;%\n  mutate(date = as.Date(date))\n\n\nbtc_all &lt;- inner_join(\n  btc %&gt;% select(Date, Close, Volume),\n  btc_vol %&gt;% select(date, price, volatility, volatility60),\n  by = c(\"Date\" = \"date\")\n)\n\n\nbtc_plot &lt;- plot_ly(btc_all, x = ~Date) %&gt;%\n  add_lines(y = ~price, name = \"BTC Price (USD)\", line = list(color = \"gold\"), yaxis = \"y1\") %&gt;%\n  add_lines(y = ~volatility, name = \"Daily Volatility\", line = list(color = \"red\", width = 1), yaxis = \"y2\") %&gt;%\n  add_lines(y = ~volatility60, name = \"60-day Volatility\", line = list(color = \"darksalmon\", width = 2), yaxis = \"y2\") %&gt;%\n  layout(\n    title = \"Bitcoin Price vs Volatility (Daily & 60-day)\",\n    yaxis = list(title = \"BTC Price (USD)\", type = \"log\"),  # 가격 로그 스케일\n    yaxis2 = list(title = \"Volatility\", overlaying = \"y\", side = \"right\"),\n    legend = list(x = 0.1, y = 0.9)\n  )\n\n\n\n# S&P 500 price\n\nsp500 &lt;- read_csv(\n  here(\"data/sp500\",\"sp500.csv\"),\n  skip = 1,\n  col_names = c(\"Date\",\"Open\",\"High\",\"Low\",\"Close\",\"AdjClose\",\"Volume\"),\n) %&gt;% slice(-1,-2)%&gt;%\n  mutate(Date = as.Date(Date))\n\n\nsp500_vix &lt;- read_csv(\n  here(\"data/sp500\",\"sp500_vix.csv\")\n) %&gt;%\n  mutate(Date = as.Date(DATE, format = \"%m/%d/%Y\")) %&gt;%\n  select(Date, VVIX)\n\nsp500_all &lt;- inner_join(\n  sp500 %&gt;% select(Date, Close),\n  sp500_vix,\n  by = \"Date\"\n)\n\n\nsp_plot &lt;- plot_ly(sp500_all, x = ~Date) %&gt;%\n  add_lines(y = ~Close, \n            name = \"S&P500 Index\", \n            line = list(color = \"blue\"), \n            yaxis = \"y1\") %&gt;%\n  add_lines(y = ~VVIX, \n            name = \"VVIX\", \n            line = list(color = \"red\"), \n            yaxis = \"y2\") %&gt;%\n  layout(\n    title = \"S&P500 Index vs VVIX\",\n    yaxis = list(title = \"S&P500 Index\", type = \"log\"),   # 로그 스케일\n    yaxis2 = list(title = \"VVIX\", overlaying = \"y\", side = \"right\"),\n    legend = list(x = 0.1, y = 0.9)\n  )\n\n\n\noil price & volatilitybtc price & volatilityS&P500 price & volatility"
+  },
+  {
+    "objectID": "data_viz/viz.html#yield-curve-for-four-countries-1",
+    "href": "data_viz/viz.html#yield-curve-for-four-countries-1",
+    "title": "Data Visualization",
+    "section": "yield curve for four countries",
+    "text": "yield curve for four countries\n\noil pricebitcoin priceS&P 500 price"
+  },
+  {
+    "objectID": "data_viz/viz.html#exchange-rates",
+    "href": "data_viz/viz.html#exchange-rates",
+    "title": "Data Visualization",
+    "section": "exchange rates",
+    "text": "exchange rates"
   }
 ]

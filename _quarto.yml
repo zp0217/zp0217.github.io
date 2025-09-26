@@ -11,7 +11,7 @@ website:
     - text: Introduction
       href: ./introduction/introduction.qmd
     - text: Data Sources
-      href: ./data/data_source.qmd
+      href: ./data_source/data_source.qmd
     - text: Data Visualization
       href: ./data_viz/viz.qmd
     - text: Exploratory Data Analysis
