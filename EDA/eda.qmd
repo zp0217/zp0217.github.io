@@ -20,7 +20,7 @@ library(plotly)
 ```
 
 
-### time series plot
+### Time series plot
 
 ::: panel-tabset
 
@@ -226,7 +226,1158 @@ eu_plot
 
 :::
 
-time series plots 
+
+### Lag plots
+
+::: panel-tabset
+
+###  JPY currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+jp_ts <- ts(jp$USD_JP, frequency = 252, start = c(year(min(jp$USD_JP))))
+gglagplot(jp_ts, do.lines=FALSE) +
+          xlab("Lags")+ylab("JYP/USD") 
+```
+
+###  GBP currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+uk_ts <- ts(uk$UK_USD, frequency = 252, start = c(year(min(uk$UK_USD))))
+gglagplot(jp_ts, do.lines=FALSE) +
+          xlab("Lags")+ylab("UK/USD") 
+```
+
+###  EUR currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+eu_ts <- ts(eu$EUR_USD, frequency = 252, start = c(year(min(eu$EUR_USD))))
+gglagplot(jp_ts, do.lines=FALSE) +
+          xlab("Lags")+ylab("EU/USD") 
+```
+
+
+### crude oil price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+crude_oil_ts <- ts(crude_oil$WTI, frequency = 365, start = c(year(min(crude_oil$WTI))))
+gglagplot(jp_ts, do.lines=FALSE) +
+          xlab("Lags")+ylab("Crude oil price") 
+```
+
+
+###  S&P500 index
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+sp500_ts <- ts(sp500$Close, frequency = 252, start = c(year(min(sp500$Close))))
+gglagplot(jp_ts, do.lines=FALSE) +
+          xlab("Lags")+ylab("S&P500 index ") 
+```
+
+
+###  Bitcoin price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+btc_ts <- ts(btc$Close, frequency = 252, start = c(year(min(btc$Close))))
+gglagplot(jp_ts, do.lines=FALSE) +
+          xlab("Lags")+ylab("Bitcoin price") 
+```
+
+
+### Japan spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+jp_spread_ts <- ts(spread$JP_Spread, frequency = 252, start = c(year(min(spread$JP_Spread))))
+
+gglagplot(jp_spread_ts, do.lines = FALSE) +
+  labs(title = "Lag Plots of japan_spread",
+       x = "Lags", y = "Japan spread %")
+```
+
+### Euro spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+eu_spread_ts <- ts(spread$EU_Spread, frequency = 252, start = c(year(min(spread$EU_Spread))))
+
+gglagplot(eu_spread_ts, do.lines = FALSE) +
+  labs(title = "Lag Plots of euro_spread",
+       x = "Lags", y = "Euro spread %")
+```
+
+
+### UK spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+uk_spread_ts <- ts(spread$UK_Spread, frequency = 252, start = c(year(min(spread$UK_Spread))))
+
+gglagplot(uk_spread_ts, do.lines = FALSE) +
+  labs(title = "Lag Plots of UK_spread",
+       x = "Lags", y = "Uk spread %")
+```
+
+
+### US spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+us_spread_ts <- ts(spread$US_Spread, frequency = 252, start = c(year(min(spread$US_Spread))))
+
+gglagplot(us_spread_ts, do.lines = FALSE) +
+  labs(title = "Lag Plots of US_spread",
+       x = "Lags", y = "US spread %")
+```
+
+
+:::
+
+
+### Decomposition 
+
+::: panel-tabset
+
+### JPY currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+decompose_jp_ts <- decompose(jp_ts)
+autoplot(decompose_jp_ts)
+```
+
+### GBP currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+decompose_uk_ts <- decompose(uk_ts)
+autoplot(decompose_uk_ts)
+```
+
+###  EUR currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+decompose_eu_ts <- decompose(eu_ts)
+autoplot(decompose_eu_ts)
+```
+
+
+### lag plot for crude oil price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+decompose_oil_ts <- decompose(crude_oil_ts)
+autoplot(decompose_oil_ts)
+```
+
+
+###  S&P500 index
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+decompose_sp500_ts <- decompose(sp500_ts)
+autoplot(decompose_sp500_ts)
+```
+
+
+###  Bitcoin price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+decompose_btc_ts <- decompose(btc_ts)
+autoplot(decompose_btc_ts)
+```
+
+###  Japan spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+decompose_jp_spread_ts <- decompose(jp_spread_ts)
+autoplot(decompose_jp_spread_ts)
+
+```
+
+### Euro spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+decompose_eu_spread_ts <- decompose(eu_spread_ts)
+autoplot(decompose_eu_spread_ts)
+
+```
+
+
+###  UK spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+decompose_uk_spread_ts <- decompose(uk_spread_ts)
+autoplot(decompose_uk_spread_ts)
+
+```
+
+
+### US spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+decompose_us_spread_ts <- decompose(us_spread_ts)
+autoplot(decompose_us_spread_ts)
+
+```
+
+
+:::
+
+### ACF and PACF plots
+
+::: panel-tabset
+
+
+### JPY currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+
+ggAcf(jp_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of JPY currency rate") +
+  theme_bw()
+
+ggPacf(jp_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of JPY currency rate") +
+  theme_bw()
+
+
+```
+
+
+### GBP currency rate
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+#| echo: true
+#| code-fold: true
+
+ggAcf(uk_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of GBP currency rate") +
+  theme_bw()
+
+ggPacf(uk_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of GBP currency rate") +
+  theme_bw()
+
+
+```
+
+
+
+### EUR currency rate
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+#| echo: true
+#| code-fold: true
+
+ggAcf(eu_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of EUR currency rate") +
+  theme_bw()
+
+ggPacf(eu_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of EUR currency rate") +
+  theme_bw()
+
+
+```
+
+
+### Crude oil price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+#| echo: true
+#| code-fold: true
+
+ggAcf(crude_oil_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of Crude Oil Price") +
+  theme_bw()
+
+ggPacf(crude_oil_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of Crude Oil Price") +
+  theme_bw()
+
+
+```
+
+
+### S&P500 index 
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+#| echo: true
+#| code-fold: true
+
+ggAcf(sp500_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of S&P500 Index") +
+  theme_bw()
+
+ggPacf(sp500_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of S&P500 Index") +
+  theme_bw()
+
+
+```
+
+
+### Bitcoin price 
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+
+
+ggAcf(btc_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of Bitcoin Price") +
+  theme_bw()
+
+ggPacf(btc_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of Bitcoin Price") +
+  theme_bw()
+
+
+```
+
+
+
+### Japan spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+
+
+ggAcf(jp_spread_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of Japan Spread Rate") +
+  theme_bw()
+
+ggPacf(jp_spread_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of Japan Spread Rate") +
+  theme_bw()
+
+
+```
+
+
+### EU spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+
+
+ggAcf(eu_spread_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of Euro Spread Rate") +
+  theme_bw()
+
+ggPacf(eu_spread_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of Euro Spread Rate") +
+  theme_bw()
+
+
+```
+
+
+### UK spread rate
+
+```{r,warning= F,message= F}
+
+#| echo: true
+#| code-fold: true
+
+ggAcf(uk_spread_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of UK Spread Rate") +
+  theme_bw()
+
+ggPacf(uk_spread_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of UK Spread Rate") +
+  theme_bw()
+
+
+
+```
+
+
+### US spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+ggAcf(us_spread_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of US Spread Rate") +
+  theme_bw()
+
+ggPacf(us_spread_ts) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of US Spread Rate") +
+  theme_bw()
+
+
+
+
+```
+
+:::
+
+
+### Augmented Dickey-Fuller Test
+
+::: panel-tabset
+
+###  JPY currency rate
+
+```{r,warning= F,message= F}
+adf.test(jp_ts)
+```
+
+###  GBP currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(uk_ts)
+```
+
+###  EUR currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(eu_ts)
+```
+
+
+### crude oil price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(crude_oil_ts)
+```
+
+
+###  S&P500 index
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(sp500_ts)
+```
+
+
+###  Bitcoin price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(btc_ts)
+```
+
+
+### Japan spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(jp_spread_ts)
+```
+
+### Euro spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(eu_spread_ts)
+```
+
+
+### UK spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(uk_spread_ts)
+```
+
+
+### US spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(us_spread_ts)
+```
+
+
+:::
+
+
+### Differencing 
+
+::: panel-tabset
+
+
+### JPY currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+ggAcf(diff(log(jp_ts))) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of JPY currency rate") +
+  theme_bw()
+
+ggPacf(diff(log(jp_ts))) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of JPY currency rate") +
+  theme_bw()
+
+
+```
+
+
+### GBP currency rate
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+#| echo: true
+#| code-fold: true
+
+ggAcf(diff(log(uk_ts))) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of GBP currency rate") +
+  theme_bw()
+
+ggPacf(diff(log(uk_ts))) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of GBP currency rate") +
+  theme_bw()
+
+
+```
+
+
+
+### EUR currency rate
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+#| echo: true
+#| code-fold: true
+
+ggAcf(diff(log(eu_ts))) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of GBP currency rate") +
+  theme_bw()
+
+ggPacf(diff(log(eu_ts))) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of GBP currency rate") +
+  theme_bw()
+
+```
+
+
+### Crude oil price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+#| echo: true
+#| code-fold: true
+
+ggAcf(log(crude_oil_ts)) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of Crude Oil Price") +
+  theme_bw()
+
+ggPacf(log(crude_oil_ts)) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of Crude Oil Price") +
+  theme_bw()
+
+
+```
+
+
+### S&P500 index 
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+#| echo: true
+#| code-fold: true
+
+ggAcf(diff(log(sp500_ts))) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of S&P500 Index") +
+  theme_bw()
+
+ggPacf(diff(log(sp500_ts))) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of S&P500 Index") +
+  theme_bw()
+
+
+```
+
+
+### Bitcoin price 
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+
+
+ggAcf(diff(log(btc_ts))) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of Bitcoin Price") +
+  theme_bw()
+
+ggPacf(diff(log(btc_ts))) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of Bitcoin Price") +
+  theme_bw()
+
+
+```
+
+
+
+### Japan spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+
+
+ggAcf(diff(jp_spread_ts)) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of Japan Spread Rate") +
+  theme_bw()
+
+ggPacf(diff(jp_spread_ts)) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of Japan Spread Rate") +
+  theme_bw()
+
+
+```
+
+
+### EU spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+
+
+ggAcf(diff(eu_spread_ts)) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of Euro Spread Rate") +
+  theme_bw()
+
+ggPacf(diff(eu_spread_ts)) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of Euro Spread Rate") +
+  theme_bw()
+
+
+```
+
+
+### UK spread rate
+
+```{r,warning= F,message= F}
+
+#| echo: true
+#| code-fold: true
+
+ggAcf(diff(uk_spread_ts)) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of UK Spread Rate") +
+  theme_bw()
+
+ggPacf(diff(uk_spread_ts)) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of UK Spread Rate") +
+  theme_bw()
+
+
+
+```
+
+
+### US spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+ggAcf(diff(us_spread_ts)) +
+  geom_segment(aes(xend = lag, yend = 0), color="blue") +
+  labs(title = "ACF of US Spread Rate") +
+  theme_bw()
+
+ggPacf(diff(uk_spread_ts)) +
+  geom_segment(aes(xend = lag, yend = 0), color="red") +
+  labs(title = "PACF of US Spread Rate") +
+  theme_bw()
+
+
+
+
+```
+
+:::
+
+
+
+
+
+### ADF test after differencing
+
+::: panel-tabset
+
+###  JPY currency rate
+
+```{r,warning= F,message= F}
+adf.test(diff(log(jp_ts)))
+```
+
+###  GBP currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(diff(log(uk_ts)))
+```
+
+###  EUR currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(diff(log(eu_ts)))
+```
+
+
+### crude oil price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+adf.test(diff(crude_oil_ts))
+
+```
+
+
+###  S&P500 index
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(diff(log(sp500_ts)))
+```
+
+
+###  Bitcoin price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(diff(log(btc_ts)))
+```
+
+
+### Japan spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(diff(jp_spread_ts))
+```
+
+### Euro spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(diff(eu_spread_ts))
+```
+
+
+### UK spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+adf.test(diff(uk_spread_ts))
+```
+
+
+### US spread rate
+
+```{r,warning= F,message= F}
+adf.test(diff(us_spread_ts))
+```
+
+
+:::
+
+
+### Moving average
+
+::: panel-tabset
+
+###  JPY currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+
+jp_df <- data.frame(Date = time(jp_ts), Value = as.numeric(jp_ts))
+jp_df$MA20 <- rollmean(jp_df$Value, 20, fill = NA, align = "right")
+jp_df$MA50 <- rollmean(jp_df$Value, 50, fill = NA, align = "right")
+jp_df$MA100 <- rollmean(jp_df$Value, 100, fill = NA, align = "right")
+
+plot_ly(jp_df, x = ~Date) %>%
+  add_lines(y = ~Value, name = "JPY Rate", line = list(color = "black")) %>%
+  add_lines(y = ~MA20, name = "MA20", line = list(color = "blue")) %>%
+  add_lines(y = ~MA50, name = "MA50", line = list(color = "red")) %>%
+  add_lines(y = ~MA100, name = "MA100", line = list(color = "green")) %>%
+  layout(title = "JPY Currency Rate with Moving Averages",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "JPY rate"))
+
+
+```
+
+###  GBP currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+uk_df <- data.frame(Date = time(uk_ts), Value = as.numeric(uk_ts))
+uk_df$MA20 <- rollmean(uk_df$Value, 20, fill = NA, align = "right")
+uk_df$MA50 <- rollmean(uk_df$Value, 50, fill = NA, align = "right")
+uk_df$MA100 <- rollmean(uk_df$Value, 100, fill = NA, align = "right")
+
+plot_ly(uk_df, x = ~Date) %>%
+  add_lines(y = ~Value, name = "GBP Rate", line = list(color = "black")) %>%
+  add_lines(y = ~MA20, name = "MA20", line = list(color = "blue")) %>%
+  add_lines(y = ~MA50, name = "MA50", line = list(color = "red")) %>%
+  add_lines(y = ~MA100, name = "MA100", line = list(color = "green")) %>%
+  layout(title = "GBP Currency Rate with Moving Averages",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "GBP rate"))
+
+
+
+```
+
+###  EUR currency rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+eu_df <- data.frame(Date = time(eu_ts), Value = as.numeric(eu_ts))
+eu_df$MA20 <- rollmean(eu_df$Value, 20, fill = NA, align = "right")
+eu_df$MA50 <- rollmean(eu_df$Value, 50, fill = NA, align = "right")
+eu_df$MA100 <- rollmean(eu_df$Value, 100, fill = NA, align = "right")
+
+plot_ly(eu_df, x = ~Date) %>%
+  add_lines(y = ~Value, name = "EUR Rate", line = list(color = "black")) %>%
+  add_lines(y = ~MA20, name = "MA20", line = list(color = "blue")) %>%
+  add_lines(y = ~MA50, name = "MA50", line = list(color = "red")) %>%
+  add_lines(y = ~MA100, name = "MA100", line = list(color = "green")) %>%
+  layout(title = "EUR Currency Rate with Moving Averages",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "EUR rate"))
+
+```
+
+
+### crude oil price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+oil_df <- data.frame(Date = time(crude_oil_ts), Value = as.numeric(crude_oil_ts))
+oil_df$MA20 <- rollmean(oil_df$Value, 20, fill = NA, align = "right")
+oil_df$MA50 <- rollmean(oil_df$Value, 50, fill = NA, align = "right")
+oil_df$MA100 <- rollmean(oil_df$Value, 100, fill = NA, align = "right")
+
+plot_ly(oil_df, x = ~Date) %>%
+  add_lines(y = ~Value, name = "Oil Price", line = list(color = "black")) %>%
+  add_lines(y = ~MA20, name = "MA20", line = list(color = "blue")) %>%
+  add_lines(y = ~MA50, name = "MA50", line = list(color = "red")) %>%
+  add_lines(y = ~MA100, name = "MA100", line = list(color = "green")) %>%
+  layout(title = "Crude Oil Price with Moving Averages",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Oil Price"))
+
+
+```
+
+
+###  S&P500 index
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+sp500_df <- data.frame(Date = time(sp500_ts), Value = as.numeric(sp500_ts))
+sp500_df$MA20 <- rollmean(sp500_df$Value, 20, fill = NA, align = "right")
+sp500_df$MA50 <- rollmean(sp500_df$Value, 50, fill = NA, align = "right")
+sp500_df$MA100 <- rollmean(sp500_df$Value, 100, fill = NA, align = "right")
+
+plot_ly(sp500_df, x = ~Date) %>%
+  add_lines(y = ~Value, name = "S&P500", line = list(color = "black")) %>%
+  add_lines(y = ~MA20, name = "MA20", line = list(color = "blue")) %>%
+  add_lines(y = ~MA50, name = "MA50", line = list(color = "red")) %>%
+  add_lines(y = ~MA100, name = "MA100", line = list(color = "green")) %>%
+  layout(title = "S&P500 Index with Moving Averages",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "S&P500"))
+
+```
+
+
+###  Bitcoin price
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+btc_df <- data.frame(Date = time(btc_ts), Value = as.numeric(btc_ts))
+btc_df$MA20 <- rollmean(btc_df$Value, 20, fill = NA, align = "right")
+btc_df$MA50 <- rollmean(btc_df$Value, 50, fill = NA, align = "right")
+btc_df$MA100 <- rollmean(btc_df$Value, 100, fill = NA, align = "right")
+
+plot_ly(btc_df, x = ~Date) %>%
+  add_lines(y = ~Value, name = "BTC Price", line = list(color = "black")) %>%
+  add_lines(y = ~MA20, name = "MA20", line = list(color = "blue")) %>%
+  add_lines(y = ~MA50, name = "MA50", line = list(color = "red")) %>%
+  add_lines(y = ~MA100, name = "MA100", line = list(color = "green")) %>%
+  layout(title = "Bitcoin Price with Moving Averages",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "BTC Price"))
+
+```
+
+
+### Japan spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+jp_spread_df <- data.frame(Date = time(jp_spread_ts), Value = as.numeric(jp_spread_ts))
+jp_spread_df$MA20 <- rollmean(jp_spread_df$Value, 20, fill = NA, align = "right")
+jp_spread_df$MA50 <- rollmean(jp_spread_df$Value, 50, fill = NA, align = "right")
+jp_spread_df$MA100 <- rollmean(jp_spread_df$Value, 100, fill = NA, align = "right")
+
+plot_ly(jp_spread_df, x = ~Date) %>%
+  add_lines(y = ~Value, name = "JP Spread", line = list(color = "black")) %>%
+  add_lines(y = ~MA20, name = "MA20", line = list(color = "blue")) %>%
+  add_lines(y = ~MA50, name = "MA50", line = list(color = "red")) %>%
+  add_lines(y = ~MA100, name = "MA100", line = list(color = "green")) %>%
+  layout(title = "Japan Spread with Moving Averages",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Spread (bps)"))
+
+```
+
+### Euro spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+eu_spread_df <- data.frame(Date = time(eu_spread_ts), Value = as.numeric(eu_spread_ts))
+eu_spread_df$MA20 <- rollmean(eu_spread_df$Value, 20, fill = NA, align = "right")
+eu_spread_df$MA50 <- rollmean(eu_spread_df$Value, 50, fill = NA, align = "right")
+eu_spread_df$MA100 <- rollmean(eu_spread_df$Value, 100, fill = NA, align = "right")
+
+plot_ly(eu_spread_df, x = ~Date) %>%
+  add_lines(y = ~Value, name = "EU Spread", line = list(color = "black")) %>%
+  add_lines(y = ~MA20, name = "MA20", line = list(color = "blue")) %>%
+  add_lines(y = ~MA50, name = "MA50", line = list(color = "red")) %>%
+  add_lines(y = ~MA100, name = "MA100", line = list(color = "green")) %>%
+  layout(title = "Euro Spread with Moving Averages",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Spread (bps)"))
+
+```
+
+
+### UK spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+uk_spread_df <- data.frame(Date = time(uk_spread_ts), Value = as.numeric(uk_spread_ts))
+uk_spread_df$MA20 <- rollmean(uk_spread_df$Value, 20, fill = NA, align = "right")
+uk_spread_df$MA50 <- rollmean(uk_spread_df$Value, 50, fill = NA, align = "right")
+uk_spread_df$MA100 <- rollmean(uk_spread_df$Value, 100, fill = NA, align = "right")
+
+plot_ly(uk_spread_df, x = ~Date) %>%
+  add_lines(y = ~Value, name = "UK Spread", line = list(color = "black")) %>%
+  add_lines(y = ~MA20, name = "MA20", line = list(color = "blue")) %>%
+  add_lines(y = ~MA50, name = "MA50", line = list(color = "red")) %>%
+  add_lines(y = ~MA100, name = "MA100", line = list(color = "green")) %>%
+  layout(title = "UK Spread with Moving Averages",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Spread (bps)"))
+
+```
+
+
+### US spread rate
+
+```{r,warning= F,message= F}
+#| echo: true
+#| code-fold: true
+
+us_spread_df <- data.frame(Date = time(us_spread_ts), Value = as.numeric(us_spread_ts))
+us_spread_df$MA20 <- rollmean(us_spread_df$Value, 20, fill = NA, align = "right")
+us_spread_df$MA50 <- rollmean(us_spread_df$Value, 50, fill = NA, align = "right")
+us_spread_df$MA100 <- rollmean(us_spread_df$Value, 100, fill = NA, align = "right")
+
+plot_ly(us_spread_df, x = ~Date) %>%
+  add_lines(y = ~Value, name = "US Spread", line = list(color = "black")) %>%
+  add_lines(y = ~MA20, name = "MA20", line = list(color = "blue")) %>%
+  add_lines(y = ~MA50, name = "MA50", line = list(color = "red")) %>%
+  add_lines(y = ~MA100, name = "MA100", line = list(color = "green")) %>%
+  layout(title = "US Spread with Moving Averages",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Spread (bps)"))
+
+```
+
+
+:::
+
+
+
+
+
+
 
 
 
