@@ -3,7 +3,7 @@ project:
   output-dir: docs
 author: zoo un park
 website:
-  title: FX market in multi-asset portfolio analysis
+  title: FX market and multi-asset 
   navbar:
     left:
     - text: About You

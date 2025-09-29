@@ -3,22 +3,36 @@ title: "Introduction"
 format: html
 ---
 
-# Time series analyis on FX market and multi-asset portfolio
+# Time series analyis in FX market and multi-assets
 
 ![](/image/currency.jpg)
 @currency-photo
 
 We bump into exchange rates more often than we realize—when we travel, shop online from overseas retailers, or invest in foreign stocks and funds. An exchange rate is simply the price of one currency in terms of another, but that price ripples through everyday budgets and corporate balance sheets alike. In other words, FX sits at the seam between micro decisions (what a family pays for imports) and macro outcomes (inflation, trade balances, and monetary policy).
-
 The foreign-exchange (FX) market is where those prices are set. It is a cornerstone of global finance not only because of its scale, but because it compresses a huge amount of information about growth prospects, interest-rate paths, and cross-border trade into a single number that moves every second. FX is also policy-relevant: shifts in exchange rates can tighten or loosen financial conditions, influence exporters’ competitiveness, and feed directly into inflation.
+This project examines how four major currency blocs—the U.S., U.K., Japan, and Eurozone—interact with global asset classes through exchange rates and sovereign bond yields. The goal of this project is to understand currency dynamics and analyze the impact of the FX market to other financial assets. 
+
 
 # Big picture
 
-This project focuses on four widely used and highly influential currencies—the US dollar (USD), euro (EUR), British pound (GBP), and Japanese yen (JPY). These are not just FX workhorses; they also anchor activity in other markets like equities, bonds, commodities, and ETFs. When they move, portfolio returns, hedging costs, and corporate earnings move with them.
+This project focuses on four widely used and highly influential currencies—the US dollar (USD), euro (EUR), British pound (GBP), and Japanese yen (JPY). These are not just FX workhorses; they also anchor activity in other markets like equities, bonds, commodities, and ETFs.  When currencies move, portfolio returns, hedging costs, and corporate earnings move with them.
+Currencies also take a crucial part in macroeconomic perspective—they transmit policy signals and real-economy shocks across markets. Rate cycles, yield-curve shifts, energy swings, and trade flows show up first (or most clearly) in the USD–EUR–GBP–JPY complex and then ripple into risk assets. By organizing evidence across rates, trade, and market behavior, this project builds a coherent narrative of how FX connects the real economy to financial outcomes.
+The goal of this project is to track how these exchange rates evolve and how they interact with the broader investment universe. Using a  data-science workflow—cleaning and aligning time-series, modeling seasonality and volatility, and testing for structural breaks, this project will focus on  five main ideas: 
 
-Goal of this project is to study how these four exchange rates evolve over time and how they interact with the broader investment universe. Using a data-science approach—cleaning and aligning public time-series data, modeling seasonality and volatility, testing structural breaks—we will examine (i) how interest-rate differentials and yield-curve shifts map into FX returns, (ii) how trade and current-account dynamics shape medium-term trends, (iii) how equity stress, credit spreads, and oil shocks(gold) spill over into currencies, (iv) what investors gain or lose by hedging foreign-equity exposure, (v) who “leads” whom within the USD–EUR–GBP–JPY complex.
+- Currency dynamics: Currencies are complex financial assets that embody a country’s money and policy backdrop, and because FX sits at the center of global pricing and risk, this project will trace how major USD moves against JPY, EUR, and GBP arise and when those moves act as safe-haven signals or amplify risk across markets.
 
-By the end, we aim to translate these signals into clear, practical guidance: when hedging tends to help, which risk states matter most, and how FX connects the dots between the real economy and financial markets.
+
+- Government bond yield curve: The yield curve summarizes how governments borrow across maturities and encodes expectations for growth and inflation, and since shifts in the U.S., U.K., Japan, and Euro area curves drive relative value and currency direction, this project will map how those changes translate into FX leadership.
+
+
+- Commodity market : Commodity prices—especially crude oil—link the real economy to market risk by shaping costs and inflation pressure, and because oil swings often trigger turning points in risk appetite, this project will identify when commodity shocks align with currency moves and when they send a conflicting signal.
+
+- Equity market : The stock market is the most familiar lens on market reaction and the S&P 500 distills broad risk and growth sentiment, so this project will track how equity surges and drawdowns relate to currency moves and spotlight moments when stocks confirm or contradict the message from FX.
+
+- Crypto market : The crypto market is new and highly volatile, often reacting fastest to liquidity and sentiment shifts, and this project will document when Bitcoin’s moves align with currency signals and when they diverge, clarifying whether crypto behaves as a risk barometer or an outlier.
+
+By the end, this project aims to translate these signals into clear, practical guidance:  FX market movement and impact to other assets, and later how this can help create an investment portfolio. 
+
 
 
 ![](/image/big_picture.png)
@@ -27,51 +41,66 @@ By the end, we aim to translate these signals into clear, practical guidance: wh
 
 # Analytical Angels
 
-- major currency in FX market : USD–EUR–GBP–JPY — See how the four big currencies move together, who leads, and when that changes.
+- Currency dynamics: Examine how major USD pairs (USD/JPY, USD/EUR, USD/GBP) encode shifting policy, trade, and risk conditions and how those shifts cascade into other markets.
 
-- Rates & Curves → Currency Moves — Test whether interest-rate gaps and bond-curve shape help - predict near-term currency moves.
+- Government bond yield curve: Track how changes in U.S., U.K., Japan, and Eurozone 2Y &10Y curves—and their cross-country spreads—reorder FX leadership and global risk tone.
 
-- Trade & External Balances → FX — Remove regular seasonal patterns in trade data and check if changes line up with currency trends.
+- Commodity & Risk interaction: Identify when oil shocks align with or contradict currency signals, revealing regime-dependent links between real-economy pressure and market risk.
 
-- Cross-Asset Risk & Shock Transmission — Measure how stock sell-offs, credit stress, and oil swings spill over into currencies.
+- Stock market & Risk interaction (S&P 500): Relate equity surges and drawdowns to concurrent currency moves to pinpoint when stocks confirm or challenge the message from FX.
 
-- Equity Exposure & Currency Hedging — Turn the insights into a simple rule for when hedging foreign stocks helps.
-
+- Crypto & Risk: Detect periods when Bitcoin behaves as a risk barometer versus an outlier, and assess whether its swings add information beyond equities and rates for FX.
 
 
 
 # Guiding Questions 
 
 
-1. Rates → FX: When do interest-rate differentials and yield-curve slopes (2y–10y) predict 1–3 month FX returns, and did those links change after 2020?
+1. When the U.S. 10-year yield rises, how quickly and by how much do USD/JPY, USD/EUR, and USD/GBP respond?
 
-2. Trade seasonality: Do seasonally adjusted moves in trade balances/current accounts lead medium-horizon FX trends, and are effects stronger around quarter-end?
+2. Do cross-country yield spreads (US–JP, US–UK, US–DE) consistently lead major FX moves, or does their influence vary by regime?
 
-3. Risk-off behavior: In equity sell-offs and credit stress (VIX/MOVE up), which currency (USD/EUR/GBP/JPY) tends to appreciate most, and how long do those moves persist?
+3. During risk-off episodes, does FX behave as a safe-haven signal (USD and JPY strength) or does that pattern break down?
 
-4. Oil shocks: Are FX responses to oil price spikes vs. drops asymmetric, and did the 2022 energy shock permanently alter EUR/GBP/JPY sensitivities?
+4. How often do oil price shocks align with dollar moves, and when do they send conflicting signals about global risk?
 
-5. Hedging payoff: Under what carry–volatility states do currency-hedged equity ETFs (e.g., HEZU, DXJ) outperform unhedged peers (EZU, EWJ), net of costs?
+5. Do seasonal patterns in oil meaningfully change the relationship between commodities and major currency pairs?
 
-6. Hedge rule efficacy: Can a simple rule (e.g., hedge when carry is low and volatility is high) beat always-hedged or always-unhedged strategies out-of-sample?
+6. Are large equity swings in the S&P 500 typically preceded by FX moves, or do equities more often lead currencies?
 
-7. Four-currency leadership: In a USD–EUR–GBP–JPY system, who leads during regime shifts, and do cross-rates (EUR/GBP, EUR/JPY, GBP/JPY) add predictive information?
+7. When volatility rises (VIX or oil volatility), does currency volatility jump at the same time or with a lag?
 
-8. Event impacts: Around FOMC/ECB/BoE/BoJ meetings and major data (CPI/NFP/GDP), are abnormal FX returns statistically significant, and state-dependent (risk-on vs risk-off)?
+8. Does Bitcoin move with risk-on/risk-off in a way that adds information beyond equities and yields for anticipating FX moves?
 
-9. Break alignment: Are breakpoints in FX–rates, FX–trade, and FX–risk linkages synchronized around 2020–2022, or are they asset-specific?
+9. Around major policy announcements (FOMC, ECB, BoE, BoJ), are currency reactions dominated by local rates, cross-country spreads, or broader risk sentiment?
 
-10. Model value-add: Do regime-aware models (TVP, Markov-switching) deliver meaningful forecast gains over a random-walk at 1–3 month horizons across all three pairs?
+10. Across tranquil vs stressed market regimes, which driver—rates, commodities, equities, or crypto—explains the largest share of currency movement?
+
 
 
 
 # Literature reviews
 
-Research on currencies consistently finds they are hard to forecast in a stable, always-works way. Broad surveys show that many models do no better than a simple “no-change” guess and that any apparent pattern tends to come and go, depending on the period and the market backdrop [@rossi2013-exchange-rate-predictability]. For a practical time-series study of USD, EUR, GBP, and JPY, this means beginning with a clear picture of how these four move together over time, testing whether relationships are stable or shifting, and comparing every result to that simple benchmark so we don’t over-interpret noise.
+- FX market 
 
-When we add economic context, studies show that interest rates do help, but their effect on exchange rates depends on market conditions. Rate gaps and the shape of bond yields matter because investors demand a changing “risk premium,” so the same rate difference can have different effects in calm vs. stressful periods [@engel2016-exchange-rates-risk-premium]. On the real-economy side, newer work after 2020 highlights a financial channel: a stronger U.S. dollar can tighten global financing and slow non-U.S. trade, beyond textbook price effects. That suggests using monthly trade figures that are cleaned for seasonal patterns and also keeping an eye on indicators of financial tightness when relating trade to currency moves [@ma-schmidt-eisenlohr-2025-financial-channel].
+Recent macro–finance work argues that exchange rates embed risk and demand shocks that co-move with interest differentials and macro quantities. Kekre and Lenel (2024)[@KekreLenel2024] show—in a general-equilibrium setting matched to U.S.–G10 data—that persistent relative demand shocks (reflected in persistent yield differentials) account for the bulk of dollar volatility, while intermediation shocks explain short-horizon UIP deviations and crisis appreciation. This perspective motivates treating major USD crosses as a hub that concentrates evolving risk and policy information, guiding our currency-dynamics angle to read FX movements alongside rate differentials and broader risk signals[@KekreLenel2024].
 
-Currencies also move with the wider market. Evidence since 2020 shows that oil-price uncertainty can ripple through stocks, bonds, and exchange rates, which encourages tracking how those connections strengthen or weaken over time and checking how currencies react after shocks such as an oil spike or an equity sell-off [@lee2022-volatility-spillovers-oil-uncertainty]. Finally, when turning findings into portfolio actions, research supports dynamic currency hedging—adjusting the hedge as conditions change—rather than a single, fixed rule, provided we keep trading costs and turnover in check; this approach is straightforward to test using widely available, investable funds [@PAGNOTTONI2024129948].
+
+- Bond yield 
+
+On cross-border monetary transmission,Engler, Ferrucci, Zabczyk, and Zheng (2024)[@EnglerEtAl2024] provide fresh evidence that ECB tightening shocks spill over strongly to Emerging Europe: government bond yields rise more than one-for-one, sovereign spreads widen, local currencies depreciate, and output slows. Their event-study and local-projection results underscore that policy shocks abroad can reshape relative yield curves and FX simultaneously, reinforcing our yield-curve angle’s focus on U.S.–foreign 10-year spreads and on announcement windows when leadership in FX can shift quickly[@EnglerEtAl2024].
+
+- Commodity 
+
+Commodity–FX linkages are state-dependent. Using VAR and DCC-GARCH connectedness, Ben Salem, Zayati, Nouira, and Rault (2024)[@BenSalemEtAl2024] document time-varying volatility spillovers between oil and major exchange rates, with spillovers intensifying in crisis phases (COVID-19, Russia–Ukraine) and easing in calmer periods. This supports treating oil both as a real-economy driver and as a risk transmitter, and it justifies regime-aware reading of oil shocks when interpreting currency moves commodity–risk angle[@BenSalemEtAl2024].
+
+- Equity 
+
+Equity–FX interactions are particularly pronounced in extremes. Li, Xie, Ouyang, Mo, and Feng (2024)[@LiEtAl2024] use a tail-event network for the G20 and find that tail risk spillovers predominantly run from stocks to FX, with Europe and the U.S. acting as major transmitters. This evidence validates monitoring stock-market stress as a precursor to large currency moves, shaping our equities–risk angle to emphasize tail episodes rather than average correlations[@LiEtAl2024].
+
+- Crypto 
+
+Crypto's role in the risk ecosystem has matured post-2022. Narayan and Kumar (2024)[@NarayanKumar2024] show that interconnectedness and risk spillovers span cryptocurrencies, sectoral equities, exchange rates, metals, and energy, and that connectedness varies over time. For  crypto–risk angle, this supports treating Bitcoin as a regime-dependent risk barometer whose signals can either add information beyond equities and yields or decouple in quieter phases [@NarayanKumar2024].
 
 
 # References 

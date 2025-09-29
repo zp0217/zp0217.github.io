@@ -43,6 +43,9 @@ eu_plot<- ggplot(eu, aes(x = observation_date, y = EUR_USD)) +
 eu_plot 
 ```
 
+
+
+
 ### GBP/USD Exchange Rate
 ```{r,warning = F,message = F}
 #| echo: true
@@ -226,6 +229,27 @@ eu_plot
 
 :::
 
+- FX rates: 
+
+all the currencies against USD has same patterns, clear upwards until 2008 and plumet after this period, with recovery period until 2020 and also decreases severly. in real economic situation, this reflects 2008 economic crisis and 2020 pandemic. eventually time series FX rate against USD shows impact of economic crisis. this also reflects FX rate has cyclic patterns. also for seasonality, it is hard to detect it. 
+
+- Crude oil:
+
+crude oil shows less movement relavantly to other assets. however, oil price also reflects economic situation, such as 2020 pandemic. one thing to note in crude oil price is that in terms of monthly, its movement has some kind of patterns. 
+
+- S&P 500 index:
+
+S&P500 graph showing upward trend as time goes by, specifically sharp upward trend for 2023. this plot as reflects economic situation, for example in 2025 first quarter, it decreases sharply, which this time, there was a tariff war, made investment slump due to economic & policy unstability.
+
+- Bitcoin: 
+
+Bitcoin is very similar as S&P500 but much radical movement, after 2023, it increases very sharply. it is hard to find seasonality or cycllic pattern for this data
+
+
+- yield curve spreads: 
+
+In yield curve spread( 10 year - 2 years ), three countries have similar pattern, but Japan has distinct pattern compare to other countries. Japan has increasing spread rate after 2020 whereas other countries has shifts. spreads generally a sign for economic policy expectation, as spread  increases it could mean downward on inflation or better economic situation, whereas decrease could mean tightening from central bank, impacting investment and sign for bad economics. 
+
 
 ### Lag plots
 
@@ -355,8 +379,11 @@ gglagplot(us_spread_ts, do.lines = FALSE) +
        x = "Lags", y = "US spread %")
 ```
 
-
 :::
+
+by observing Lag plots, all the variables has similar conclusion; it is strongly linear, which is strongly autocorrelated and non-stationary. Also it is hard to observe seasonality. 
+
+among plots, spread rate plots are less linear and autocorrelated compare to others, it has  less centric to the line. 
 
 
 ### Decomposition 
@@ -472,8 +499,9 @@ autoplot(decompose_us_spread_ts)
 
 ```
 
-
 :::
+
+For all the data, it has weak seasonlity as giving same conclusion as Lag plots. 
 
 ### ACF and PACF plots
 
@@ -704,6 +732,17 @@ ggPacf(us_spread_ts) +
 
 :::
 
+- FX rates : 
+
+ACF plot shows slow decay and showing high ACF and PACF shows after lag 0-1, it signicantly falls to line, showing correlation like past results
+
+- crude oil, s&P500, bitcoin : 
+
+these data decays very radically, for crude oil and S&P500 it goes to negative value, which can say there is an inverse realtionship for observation  k time step apart. for PACF, it also falls significantly after lag 0-1, showing correlation.
+
+- spread rate :
+
+spread rate ACF also decays very radically, howevcer it doesn't go to negative value except US spread rate, this might due that in time series plot, US rates are much radical compare to other country spread rate. for PACF plot, it can hold more lags; lag 2-3 or 4 is capable for spread rate plots, after that it is correlated. this result corresponds to lag plot since spread rate's lag plot has less linear pattern compare to other data
 
 ### Augmented Dickey-Fuller Test
 
@@ -802,9 +841,9 @@ adf.test(uk_spread_ts)
 adf.test(us_spread_ts)
 ```
 
-
 :::
 
+For all of categories, ADF test suggest it is non-statationary, since it has large p-value(0.05) which fails to reject null hypothesis. So, performing log transformation or differencing is well needed. 
 
 ### Differencing 
 
@@ -1033,9 +1072,7 @@ ggPacf(diff(uk_spread_ts)) +
 
 :::
 
-
-
-
+for all the data, first differencing ACF and PACF plot shows similar patterns, which seems stationary. this will later on goes to ADF test. 
 
 ### ADF test after differencing
 
@@ -1131,9 +1168,9 @@ adf.test(diff(uk_spread_ts))
 adf.test(diff(us_spread_ts))
 ```
 
-
 :::
 
+for all the data, compare to ADF test before differencing, now rejects null hypothesis due to small p- value, concluding it is stationary
 
 ### Moving average
 
@@ -1370,9 +1407,11 @@ plot_ly(us_spread_df, x = ~Date) %>%
 
 ```
 
-
 :::
 
+three MA: 20,50 ,100
+
+for all the plots, 50 moving average aligns well with data, for 100 moving average, it seems like it is overfitting. 
 
 
 
